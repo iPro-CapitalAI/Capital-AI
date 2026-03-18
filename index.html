@@ -96,14 +96,14 @@ nav { position:sticky; top:0; z-index:100; background:rgba(13,13,13,0.93); backd
 .btn-primary:active { transform:translateY(0); box-shadow:none; }
 
 /* HERO */
-.hero { position:relative; overflow:hidden; padding:100px 0 120px; border-bottom:0.5px solid var(--border); }
+.hero { position:relative; overflow:hidden; padding:100px 0 180px; border-bottom:0.5px solid var(--border); }
 .hero-grid-bg { position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px); background-size:60px 60px; pointer-events:none; animation:gridFade 2s ease both; }
 .hero-red-streak { position:absolute; top:0; left:0; right:0; height:2px; background:var(--red); opacity:0.75; animation:streakIn 1s 0.1s ease both; transform-origin:left; }
 .hero-scan { position:absolute; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,rgba(192,57,43,0.45),transparent); pointer-events:none; animation:scanLine 5s 2s linear infinite; }
-.hero-skyline { position:absolute; bottom:0; left:0; right:0; height:220px; pointer-events:none; animation:skyRise 1.8s 0.4s ease both; }
+.hero-skyline { position:absolute; bottom:0; left:0; right:0; height:280px; pointer-events:none; animation:skyRise 1.8s 0.4s ease both; z-index:1; }
 .hero-skyline svg { width:100%; height:100%; }
 
-.hero-inner { position:relative; text-align:center; max-width:800px; margin:0 auto; }
+.hero-inner { position:relative; text-align:center; max-width:800px; margin:0 auto; z-index:2; text-shadow: 0 2px 20px rgba(0,0,0,0.8), 0 0 40px rgba(13,13,13,0.9); }
 .hero-eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--red); background:rgba(192,57,43,0.1); border:0.5px solid rgba(192,57,43,0.3); border-radius:4px; padding:5px 12px; margin-bottom:28px; animation:fadeUp 0.6s 0.6s both; }
 .hero-eyebrow::before { content:''; width:5px; height:5px; background:var(--red); border-radius:50%; animation:pulse 2s infinite; }
 .hero-headline { font-family:var(--font-display); font-size:clamp(36px,6vw,68px); font-weight:800; line-height:1.03; letter-spacing:-0.03em; color:var(--text); margin-bottom:18px; animation:fadeUp 0.7s 0.75s both; }
@@ -113,8 +113,8 @@ nav { position:sticky; top:0; z-index:100; background:rgba(13,13,13,0.93); backd
 .hero-sub strong { color:var(--text); font-weight:400; }
 .hero-ctas { display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:wrap; margin-bottom:24px; animation:fadeUp 0.7s 1.15s both; }
 .hero-ctas .btn-primary { font-size:15px; padding:14px 30px; animation:glowBtn 3s 2.5s infinite; }
-.hero-fine { font-size:12px; color:var(--text-3); letter-spacing:0.02em; animation:fadeIn 0.7s 1.35s both; }
-.hero-locale { display:flex; align-items:center; justify-content:center; gap:6px; margin-top:14px; font-size:12px; color:var(--text-3); animation:fadeIn 0.7s 1.45s both; }
+.hero-fine { font-size:12px; color:var(--text-2); letter-spacing:0.02em; animation:fadeIn 0.7s 1.35s both; }
+.hero-locale { display:flex; align-items:center; justify-content:center; gap:6px; margin-top:14px; font-size:12px; color:var(--text-2); animation:fadeIn 0.7s 1.45s both; }
 
 /* PROOF */
 .proof { padding:60px 0; border-bottom:0.5px solid var(--border); }
@@ -195,13 +195,13 @@ footer { padding:24px 0; border-top:0.5px solid var(--border); }
 /* RESPONSIVE */
 @media (max-width:900px) { .services-grid{grid-template-columns:repeat(2,1fr);} .proof-badges{grid-template-columns:repeat(3,1fr);} }
 @media (max-width:640px) {
-  .nav-links{display:none;} .hero{padding:72px 0 100px;}
+  .nav-links{display:none;} .hero{padding:72px 0 150px;}
   .proof-badges{grid-template-columns:repeat(2,1fr);}
   .proof-badges .proof-badge:last-child{grid-column:span 2;}
   .services-grid{grid-template-columns:1fr;}
   .proof-logos{justify-content:center;}
   .footer-inner{flex-direction:column;align-items:flex-start;gap:8px;}
-  .hero-skyline{height:160px;}
+  .hero-skyline{height:200px;}
 }
 </style>
 </head>
@@ -233,157 +233,397 @@ footer { padding:24px 0; border-top:0.5px solid var(--border); }
 
   <!-- Ottawa Parliament Skyline SVG -->
   <div class="hero-skyline" aria-hidden="true">
-    <svg viewBox="0 0 1200 220" xmlns="http://www.w3.org/2000/svg" fill="white" preserveAspectRatio="xMidYMax meet">
-      <!-- Far left Ottawa buildings -->
-      <rect x="0"   y="165" width="18" height="55"/>
-      <rect x="20"  y="150" width="22" height="70"/>
-      <rect x="23"  y="142" width="14" height="9"/>
-      <rect x="44"  y="158" width="16" height="62"/>
-      <rect x="62"  y="144" width="28" height="76"/>
-      <rect x="66"  y="136" width="18" height="8"/>
-      <rect x="92"  y="154" width="20" height="66"/>
-      <rect x="114" y="140" width="24" height="80"/>
-      <rect x="117" y="131" width="16" height="9"/>
-      <rect x="140" y="162" width="18" height="58"/>
-      <rect x="160" y="146" width="22" height="74"/>
-      <rect x="163" y="138" width="14" height="8"/>
+    <svg viewBox="0 0 1400 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
+      <defs>
+        <!-- Mask to punch clock holes through tower body -->
+        <mask id="ptClock">
+          <rect width="1400" height="280" fill="white"/>
+          <circle cx="603" cy="83" r="11" fill="black"/>
+          <circle cx="625" cy="83" r="11" fill="black"/>
+        </mask>
+        <mask id="ebClock">
+          <rect width="1400" height="280" fill="white"/>
+          <circle cx="912" cy="116" r="7" fill="black"/>
+          <circle cx="924" cy="116" r="7" fill="black"/>
+        </mask>
+      </defs>
 
-      <!-- Chateau Laurier -->
-      <rect x="186" y="128" width="52" height="92"/>
-      <rect x="189" y="116" width="11" height="13"/>
-      <rect x="203" y="110" width="11" height="19"/>
-      <rect x="217" y="116" width="11" height="13"/>
-      <rect x="226" y="121" width="9"  height="8"/>
-      <polygon points="186,128 212,106 238,128" />
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- FAR LEFT GENERIC BUILDINGS                -->
+      <!-- ═══════════════════════════════════════════ -->
+      <rect x="0"   y="200" width="14" height="80" fill="white"/>
+      <rect x="16"  y="185" width="18" height="95" fill="white"/>
+      <rect x="18"  y="178" width="14" height="7"  fill="white"/>
+      <rect x="36"  y="193" width="14" height="87" fill="white"/>
+      <rect x="52"  y="178" width="20" height="102" fill="white"/>
+      <rect x="54"  y="170" width="16" height="8"  fill="white"/>
+      <rect x="74"  y="188" width="16" height="92" fill="white"/>
+      <!-- Church spire -->
+      <polygon points="96,158 93,182 99,182" fill="white"/>
+      <rect x="90"  y="182" width="18" height="98" fill="white"/>
+      <rect x="86"  y="200" width="26" height="80" fill="white"/>
 
-      <!-- Approaching Parliament -->
-      <rect x="243" y="148" width="20" height="72"/>
-      <rect x="265" y="156" width="16" height="64"/>
-      <rect x="283" y="140" width="24" height="80"/>
-      <rect x="286" y="132" width="16" height="8"/>
-      <rect x="310" y="152" width="18" height="68"/>
-      <rect x="330" y="144" width="22" height="76"/>
-      <rect x="333" y="136" width="14" height="8"/>
-      <rect x="356" y="158" width="16" height="62"/>
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- CHÂTEAU LAURIER                           -->
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- Main body -->
+      <rect x="116" y="152" width="80" height="128" fill="white"/>
+      <!-- Steep chateau hip roof -->
+      <polygon points="116,152 156,122 196,152" fill="white"/>
+      <!-- Left corner tower + spire -->
+      <rect x="112" y="142" width="16" height="82" fill="white"/>
+      <polygon points="120,122 112,142 128,142" fill="white"/>
+      <!-- Second left tower -->
+      <rect x="130" y="148" width="12" height="76" fill="white"/>
+      <polygon points="136,130 130,148 142,148" fill="white"/>
+      <!-- Right corner tower + spire -->
+      <rect x="186" y="142" width="16" height="88" fill="white"/>
+      <polygon points="194,122 186,142 202,142" fill="white"/>
+      <!-- Dormers on roof -->
+      <polygon points="143,146 148,134 153,146" fill="white"/>
+      <polygon points="158,146 163,134 168,146" fill="white"/>
+      <polygon points="172,146 177,134 182,146" fill="white"/>
+      <!-- Chimney stacks -->
+      <rect x="120" y="112" width="5" height="38" fill="white"/>
+      <rect x="128" y="106" width="5" height="42" fill="white"/>
+      <rect x="186" y="110" width="5" height="40" fill="white"/>
+      <rect x="194" y="114" width="5" height="36" fill="white"/>
+      <!-- Facade windows -->
+      <rect x="122" y="160" width="8" height="12" fill="#0d0d0d"/>
+      <rect x="135" y="160" width="8" height="12" fill="#0d0d0d"/>
+      <rect x="148" y="160" width="8" height="12" fill="#0d0d0d"/>
+      <rect x="161" y="160" width="8" height="12" fill="#0d0d0d"/>
+      <rect x="174" y="160" width="8" height="12" fill="#0d0d0d"/>
+      <rect x="187" y="160" width="8" height="12" fill="#0d0d0d"/>
+      <rect x="122" y="178" width="8" height="12" fill="#0d0d0d"/>
+      <rect x="135" y="178" width="8" height="12" fill="#0d0d0d"/>
+      <rect x="148" y="178" width="8" height="12" fill="#0d0d0d"/>
+      <rect x="161" y="178" width="8" height="12" fill="#0d0d0d"/>
+      <rect x="174" y="178" width="8" height="12" fill="#0d0d0d"/>
+      <rect x="187" y="178" width="8" height="12" fill="#0d0d0d"/>
+      <!-- Arched porte-cochere entrance -->
+      <rect x="150" y="240" width="12" height="40" fill="#0d0d0d"/>
+      <ellipse cx="156" cy="240" rx="6" ry="7" fill="#0d0d0d"/>
 
-      <!-- ====== PARLIAMENT HILL CENTRE BLOCK ====== -->
-      <!-- Wings -->
-      <rect x="374" y="128" width="42" height="92"/>
-      <rect x="376" y="118" width="30" height="10"/>
-      <rect x="724" y="128" width="42" height="92"/>
-      <rect x="734" y="118" width="30" height="10"/>
-      <!-- Main Centre Block body -->
-      <rect x="416" y="114" width="308" height="106"/>
-      <!-- Decorative buttresses -->
-      <rect x="420" y="104" width="7" height="10"/>
-      <rect x="434" y="104" width="7" height="10"/>
-      <rect x="448" y="104" width="7" height="10"/>
-      <rect x="462" y="104" width="7" height="10"/>
-      <!-- skip tower zone -->
-      <rect x="570" y="104" width="7" height="10"/>
-      <rect x="584" y="104" width="7" height="10"/>
-      <rect x="598" y="104" width="7" height="10"/>
-      <rect x="612" y="104" width="7" height="10"/>
-      <rect x="626" y="104" width="7" height="10"/>
-      <rect x="640" y="104" width="7" height="10"/>
-      <rect x="654" y="104" width="7" height="10"/>
-      <rect x="668" y="104" width="7" height="10"/>
-      <rect x="682" y="104" width="7" height="10"/>
-      <rect x="696" y="104" width="7" height="10"/>
-      <rect x="710" y="104" width="7" height="10"/>
-      <!-- Windows row on main block -->
-      <rect x="422" y="130" width="9" height="13" opacity="0.45"/>
-      <rect x="437" y="130" width="9" height="13" opacity="0.45"/>
-      <rect x="452" y="130" width="9" height="13" opacity="0.45"/>
-      <rect x="467" y="130" width="9" height="13" opacity="0.45"/>
-      <rect x="590" y="130" width="9" height="13" opacity="0.45"/>
-      <rect x="605" y="130" width="9" height="13" opacity="0.45"/>
-      <rect x="620" y="130" width="9" height="13" opacity="0.45"/>
-      <rect x="635" y="130" width="9" height="13" opacity="0.45"/>
-      <rect x="650" y="130" width="9" height="13" opacity="0.45"/>
-      <rect x="665" y="130" width="9" height="13" opacity="0.45"/>
-      <rect x="680" y="130" width="9" height="13" opacity="0.45"/>
-      <rect x="695" y="130" width="9" height="13" opacity="0.45"/>
-      <rect x="710" y="130" width="9" height="13" opacity="0.45"/>
-      <!-- Lower windows row -->
-      <rect x="422" y="158" width="9" height="13" opacity="0.35"/>
-      <rect x="437" y="158" width="9" height="13" opacity="0.35"/>
-      <rect x="452" y="158" width="9" height="13" opacity="0.35"/>
-      <rect x="467" y="158" width="9" height="13" opacity="0.35"/>
-      <rect x="590" y="158" width="9" height="13" opacity="0.35"/>
-      <rect x="605" y="158" width="9" height="13" opacity="0.35"/>
-      <rect x="620" y="158" width="9" height="13" opacity="0.35"/>
-      <rect x="635" y="158" width="9" height="13" opacity="0.35"/>
-      <!-- Arched entrance doors -->
-      <rect x="490" y="170" width="16" height="24" opacity="0.5"/>
-      <rect x="512" y="170" width="16" height="24" opacity="0.5"/>
-      <rect x="534" y="170" width="16" height="24" opacity="0.5"/>
+      <!-- Transition buildings -->
+      <rect x="206" y="188" width="18" height="92" fill="white"/>
+      <rect x="226" y="178" width="20" height="102" fill="white"/>
+      <rect x="228" y="170" width="14" height="8"  fill="white"/>
+      <rect x="248" y="185" width="16" height="95" fill="white"/>
+      <rect x="266" y="172" width="18" height="108" fill="white"/>
+      <rect x="268" y="164" width="14" height="8"  fill="white"/>
 
-      <!-- PEACE TOWER - dead centre, tallest element -->
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- WEST BLOCK                                -->
+      <!-- ═══════════════════════════════════════════ -->
+      <rect x="287" y="160" width="64" height="120" fill="white"/>
+      <!-- Gabled roof -->
+      <polygon points="287,160 319,136 351,160" fill="white"/>
+      <!-- Left corner tower with spire -->
+      <rect x="282" y="148" width="18" height="78" fill="white"/>
+      <polygon points="291,128 282,148 300,148" fill="white"/>
+      <!-- Right corner tower -->
+      <rect x="336" y="152" width="16" height="72" fill="white"/>
+      <polygon points="344,132 336,152 352,152" fill="white"/>
+      <!-- Centre tower -->
+      <rect x="310" y="130" width="18" height="32" fill="white"/>
+      <rect x="312" y="118" width="14" height="14" fill="white"/>
+      <polygon points="319,104 311,118 327,118" fill="white"/>
+      <!-- Windows -->
+      <rect x="293" y="170" width="9" height="13" fill="#0d0d0d"/>
+      <rect x="307" y="170" width="9" height="13" fill="#0d0d0d"/>
+      <rect x="321" y="170" width="9" height="13" fill="#0d0d0d"/>
+      <rect x="335" y="170" width="9" height="13" fill="#0d0d0d"/>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- LIBRARY OF PARLIAMENT — octagonal dome    -->
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- Drum base -->
+      <rect x="355" y="196" width="44" height="84" fill="white"/>
+      <!-- Octagonal rotunda body (approximated as wider rect with cut corners) -->
+      <polygon points="362,196 377,188 389,188 396,196" fill="white"/>
+      <!-- Conical copper roof -->
+      <polygon points="377,160 355,196 399,196" fill="white"/>
+      <!-- Lantern drum -->
+      <rect x="373" y="148" width="8" height="14" fill="white"/>
+      <!-- Lantern spire -->
+      <polygon points="377,136 373,148 381,148" fill="white"/>
+      <!-- Buttresses on drum -->
+      <rect x="355" y="196" width="5" height="30" fill="white"/>
+      <rect x="395" y="196" width="5" height="30" fill="white"/>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- WEST WING                                 -->
+      <!-- ═══════════════════════════════════════════ -->
+      <rect x="412" y="162" width="58" height="118" fill="white"/>
+      <polygon points="412,162 441,144 470,162" fill="white"/>
+      <rect x="408" y="152" width="12" height="28" fill="white"/>
+      <polygon points="414,138 408,152 420,152" fill="white"/>
+      <rect x="420" y="172" width="9" height="13" fill="#0d0d0d"/>
+      <rect x="434" y="172" width="9" height="13" fill="#0d0d0d"/>
+      <rect x="448" y="172" width="9" height="13" fill="#0d0d0d"/>
+      <rect x="462" y="172" width="9" height="13" fill="#0d0d0d"/>
+      <rect x="420" y="192" width="9" height="13" fill="#0d0d0d"/>
+      <rect x="434" y="192" width="9" height="13" fill="#0d0d0d"/>
+      <rect x="448" y="192" width="9" height="13" fill="#0d0d0d"/>
+      <rect x="462" y="192" width="9" height="13" fill="#0d0d0d"/>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- CENTRE BLOCK MAIN BODY                    -->
+      <!-- ═══════════════════════════════════════════ -->
+      <rect x="470" y="148" width="350" height="132" fill="white"/>
+      <!-- Varied gabled roofline matching reference -->
+      <polygon points="470,148 492,132 514,148" fill="white"/>
+      <polygon points="514,148 536,128 558,148" fill="white"/>
+      <polygon points="558,148 572,138 586,148" fill="white"/>
+      <!-- Peace Tower zone flat -->
+      <polygon points="696,148 710,134 724,148" fill="white"/>
+      <polygon points="724,148 746,130 768,148" fill="white"/>
+      <polygon points="768,148 790,136 812,148" fill="white"/>
+      <!-- Parapet / cornice line -->
+      <rect x="470" y="144" width="350" height="5" fill="white"/>
+      <!-- Buttress row top -->
+      <rect x="476" y="136" width="7" height="14" fill="white"/>
+      <rect x="490" y="136" width="7" height="14" fill="white"/>
+      <rect x="504" y="136" width="7" height="14" fill="white"/>
+      <rect x="518" y="136" width="7" height="14" fill="white"/>
+      <rect x="532" y="136" width="7" height="14" fill="white"/>
+      <rect x="546" y="136" width="7" height="14" fill="white"/>
+      <rect x="560" y="136" width="7" height="14" fill="white"/>
+      <rect x="574" y="136" width="7" height="14" fill="white"/>
+      <rect x="700" y="136" width="7" height="14" fill="white"/>
+      <rect x="714" y="136" width="7" height="14" fill="white"/>
+      <rect x="728" y="136" width="7" height="14" fill="white"/>
+      <rect x="742" y="136" width="7" height="14" fill="white"/>
+      <rect x="756" y="136" width="7" height="14" fill="white"/>
+      <rect x="770" y="136" width="7" height="14" fill="white"/>
+      <rect x="784" y="136" width="7" height="14" fill="white"/>
+      <rect x="798" y="136" width="7" height="14" fill="white"/>
+      <!-- Windows upper -->
+      <rect x="477" y="160" width="10" height="14" fill="#0d0d0d"/>
+      <rect x="493" y="160" width="10" height="14" fill="#0d0d0d"/>
+      <rect x="509" y="160" width="10" height="14" fill="#0d0d0d"/>
+      <rect x="525" y="160" width="10" height="14" fill="#0d0d0d"/>
+      <rect x="541" y="160" width="10" height="14" fill="#0d0d0d"/>
+      <rect x="557" y="160" width="10" height="14" fill="#0d0d0d"/>
+      <rect x="573" y="160" width="10" height="14" fill="#0d0d0d"/>
+      <rect x="701" y="160" width="10" height="14" fill="#0d0d0d"/>
+      <rect x="717" y="160" width="10" height="14" fill="#0d0d0d"/>
+      <rect x="733" y="160" width="10" height="14" fill="#0d0d0d"/>
+      <rect x="749" y="160" width="10" height="14" fill="#0d0d0d"/>
+      <rect x="765" y="160" width="10" height="14" fill="#0d0d0d"/>
+      <rect x="781" y="160" width="10" height="14" fill="#0d0d0d"/>
+      <rect x="797" y="160" width="10" height="14" fill="#0d0d0d"/>
+      <!-- Windows lower -->
+      <rect x="477" y="184" width="10" height="14" fill="#0d0d0d"/>
+      <rect x="493" y="184" width="10" height="14" fill="#0d0d0d"/>
+      <rect x="509" y="184" width="10" height="14" fill="#0d0d0d"/>
+      <rect x="525" y="184" width="10" height="14" fill="#0d0d0d"/>
+      <rect x="541" y="184" width="10" height="14" fill="#0d0d0d"/>
+      <rect x="557" y="184" width="10" height="14" fill="#0d0d0d"/>
+      <rect x="701" y="184" width="10" height="14" fill="#0d0d0d"/>
+      <rect x="717" y="184" width="10" height="14" fill="#0d0d0d"/>
+      <rect x="733" y="184" width="10" height="14" fill="#0d0d0d"/>
+      <rect x="749" y="184" width="10" height="14" fill="#0d0d0d"/>
+      <rect x="765" y="184" width="10" height="14" fill="#0d0d0d"/>
+      <rect x="781" y="184" width="10" height="14" fill="#0d0d0d"/>
+      <!-- Arched entrance portals -->
+      <rect x="484" y="228" width="14" height="52" fill="#0d0d0d"/>
+      <ellipse cx="491" cy="228" rx="7" ry="8" fill="#0d0d0d"/>
+      <rect x="506" y="228" width="14" height="52" fill="#0d0d0d"/>
+      <ellipse cx="513" cy="228" rx="7" ry="8" fill="#0d0d0d"/>
+      <rect x="528" y="228" width="14" height="52" fill="#0d0d0d"/>
+      <ellipse cx="535" cy="228" rx="7" ry="8" fill="#0d0d0d"/>
+      <rect x="752" y="228" width="14" height="52" fill="#0d0d0d"/>
+      <ellipse cx="759" cy="228" rx="7" ry="8" fill="#0d0d0d"/>
+      <rect x="774" y="228" width="14" height="52" fill="#0d0d0d"/>
+      <ellipse cx="781" cy="228" rx="7" ry="8" fill="#0d0d0d"/>
+      <rect x="796" y="228" width="14" height="52" fill="#0d0d0d"/>
+      <ellipse cx="803" cy="228" rx="7" ry="8" fill="#0d0d0d"/>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- ████ PEACE TOWER — full Gothic detail ████ -->
+      <!-- ═══════════════════════════════════════════ -->
       <!-- Tower base plinth -->
-      <rect x="545" y="88"  width="50" height="26"/>
-      <!-- Tower lower -->
-      <rect x="550" y="52"  width="40" height="38"/>
-      <!-- Clock storey -->
-      <rect x="554" y="32"  width="32" height="22"/>
-      <!-- Clock faces -->
-      <rect x="556" y="35"  width="10" height="10" opacity="0.55"/>
-      <rect x="574" y="35"  width="10" height="10" opacity="0.55"/>
-      <rect x="556" y="52"  width="10" height="10" opacity="0.55"/>
-      <rect x="574" y="52"  width="10" height="10" opacity="0.55"/>
-      <!-- Tower belfry -->
-      <rect x="557" y="18"  width="26" height="16"/>
-      <!-- Copper roof pyramid -->
-      <polygon points="570,2 554,18 586,18"/>
-      <!-- Flag staff -->
-      <rect x="569" y="0"   width="2"  height="6" opacity="0.8"/>
-      <!-- Corner pinnacles on tower -->
-      <polygon points="555,32 551,38 559,38"/>
-      <polygon points="585,32 581,38 589,38"/>
+      <rect x="588" y="132" width="52" height="18" fill="white"/>
+      <!-- Tower lower storey with pointed arch windows -->
+      <rect x="592" y="92"  width="44" height="42" fill="white"/>
+      <!-- Pointed arch windows left -->
+      <rect x="596" y="98"  width="11" height="20" fill="#0d0d0d"/>
+      <polygon points="601.5,95 596,98 607,98" fill="#0d0d0d"/>
+      <!-- Pointed arch windows right -->
+      <rect x="621" y="98"  width="11" height="20" fill="#0d0d0d"/>
+      <polygon points="626.5,95 621,98 632,98" fill="#0d0d0d"/>
 
-      <!-- East Block -->
-      <rect x="776" y="124" width="58" height="96"/>
-      <rect x="779" y="115" width="16" height="9"/>
-      <rect x="798" y="115" width="16" height="9"/>
-      <polygon points="776,124 805,106 834,124"/>
-      <!-- East Block corner tower -->
-      <rect x="793" y="88"  width="24" height="28"/>
-      <rect x="796" y="79"  width="18" height="10"/>
-      <polygon points="805,70 798,79 812,79"/>
+      <!-- Clock storey — uses mask to punch clock holes -->
+      <rect x="594" y="62"  width="40" height="32" fill="white" mask="url(#ptClock)"/>
+      <!-- Clock face rims -->
+      <circle cx="603" cy="83" r="11" fill="none" stroke="white" stroke-width="1.5"/>
+      <circle cx="625" cy="83" r="11" fill="none" stroke="white" stroke-width="1.5"/>
+      <!-- Clock tick marks at 12/3/6/9 — left clock -->
+      <line x1="603" y1="73" x2="603" y2="76" stroke="white" stroke-width="1.5" fill="none"/>
+      <line x1="613" y1="83" x2="610" y2="83" stroke="white" stroke-width="1.5" fill="none"/>
+      <line x1="603" y1="93" x2="603" y2="90" stroke="white" stroke-width="1.5" fill="none"/>
+      <line x1="593" y1="83" x2="596" y2="83" stroke="white" stroke-width="1.5" fill="none"/>
+      <!-- Clock hands left (~10:10) -->
+      <line x1="603" y1="83" x2="599" y2="75" stroke="white" stroke-width="2"   fill="none"/>
+      <line x1="603" y1="83" x2="610" y2="79" stroke="white" stroke-width="1.5" fill="none"/>
+      <!-- Clock tick marks — right clock -->
+      <line x1="625" y1="73" x2="625" y2="76" stroke="white" stroke-width="1.5" fill="none"/>
+      <line x1="635" y1="83" x2="632" y2="83" stroke="white" stroke-width="1.5" fill="none"/>
+      <line x1="625" y1="93" x2="625" y2="90" stroke="white" stroke-width="1.5" fill="none"/>
+      <line x1="615" y1="83" x2="618" y2="83" stroke="white" stroke-width="1.5" fill="none"/>
+      <!-- Clock hands right -->
+      <line x1="625" y1="83" x2="621" y2="75" stroke="white" stroke-width="2"   fill="none"/>
+      <line x1="625" y1="83" x2="632" y2="79" stroke="white" stroke-width="1.5" fill="none"/>
 
-      <!-- Buildings right of Parliament -->
-      <rect x="842" y="148" width="22" height="72"/>
-      <rect x="866" y="155" width="18" height="65"/>
-      <rect x="886" y="136" width="28" height="84"/>
-      <rect x="889" y="127" width="20" height="9"/>
+      <!-- Corner pinnacles flanking clock storey -->
+      <rect x="590" y="60"  width="6" height="10" fill="white"/>
+      <polygon points="593,52 590,60 596,60" fill="white"/>
+      <rect x="632" y="60"  width="6" height="10" fill="white"/>
+      <polygon points="635,52 632,60 638,60" fill="white"/>
 
-      <!-- Confederation Building -->
-      <rect x="920" y="120" width="52" height="100"/>
-      <rect x="923" y="111" width="15" height="9"/>
-      <rect x="942" y="111" width="15" height="9"/>
-      <polygon points="920,120 946,102 972,120"/>
-      <rect x="937" y="84"  width="18" height="28"/>
-      <rect x="939" y="75"  width="14" height="11"/>
-      <polygon points="946,66 940,75 952,75"/>
+      <!-- Belfry storey -->
+      <rect x="598" y="38"  width="32" height="26" fill="white"/>
+      <!-- Belfry pointed arch openings (bell holes — dark cutouts) -->
+      <rect x="602" y="44"  width="10" height="16" fill="#0d0d0d"/>
+      <polygon points="607,40 602,44 612,44" fill="#0d0d0d"/>
+      <rect x="616" y="44"  width="10" height="16" fill="#0d0d0d"/>
+      <polygon points="621,40 616,44 626,44" fill="#0d0d0d"/>
+      <!-- Belfry corner finials -->
+      <rect x="595" y="34"  width="5" height="6"  fill="white"/>
+      <polygon points="597.5,27 595,34 600,34" fill="white"/>
+      <rect x="628" y="34"  width="5" height="6"  fill="white"/>
+      <polygon points="630.5,27 628,34 633,34" fill="white"/>
 
-      <!-- Far right buildings -->
-      <rect x="978"  y="150" width="20" height="70"/>
-      <rect x="1000" y="142" width="24" height="78"/>
-      <rect x="1003" y="133" width="16" height="9"/>
-      <rect x="1026" y="156" width="18" height="64"/>
-      <rect x="1046" y="144" width="22" height="76"/>
-      <rect x="1049" y="136" width="14" height="8"/>
-      <rect x="1070" y="152" width="20" height="68"/>
-      <rect x="1092" y="140" width="26" height="80"/>
-      <rect x="1095" y="131" width="18" height="9"/>
-      <rect x="1120" y="158" width="18" height="62"/>
-      <rect x="1140" y="146" width="22" height="74"/>
-      <rect x="1164" y="155" width="20" height="65"/>
-      <rect x="1186" y="143" width="14" height="77"/>
+      <!-- THE COPPER SPIRE — tall and slender like the real tower -->
+      <polygon points="614,2 598,38 630,38" fill="white"/>
+      <!-- Flagpole on spire -->
+      <rect x="613" y="0"  width="2"  height="10" fill="white"/>
+      <!-- Flag -->
+      <rect x="615" y="0"  width="10" height="6"  fill="white"/>
 
-      <!-- Ground line -->
-      <rect x="0" y="218" width="1200" height="2" opacity="0.25"/>
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- EAST WING                                 -->
+      <!-- ═══════════════════════════════════════════ -->
+      <rect x="820" y="162" width="58" height="118" fill="white"/>
+      <polygon points="820,162 849,144 878,162" fill="white"/>
+      <rect x="876" y="152" width="12" height="28" fill="white"/>
+      <polygon points="882,138 876,152 888,152" fill="white"/>
+      <rect x="825" y="172" width="9" height="13" fill="#0d0d0d"/>
+      <rect x="839" y="172" width="9" height="13" fill="#0d0d0d"/>
+      <rect x="853" y="172" width="9" height="13" fill="#0d0d0d"/>
+      <rect x="867" y="172" width="9" height="13" fill="#0d0d0d"/>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- EAST BLOCK                                -->
+      <!-- ═══════════════════════════════════════════ -->
+      <rect x="884" y="158" width="66" height="122" fill="white"/>
+      <!-- Steep chateau roof -->
+      <polygon points="884,158 917,132 950,158" fill="white"/>
+      <!-- Left corner tower + spire -->
+      <rect x="880" y="146" width="16" height="84" fill="white"/>
+      <polygon points="888,126 880,146 896,146" fill="white"/>
+      <!-- Right corner tower + spire -->
+      <rect x="938" y="150" width="16" height="80" fill="white"/>
+      <polygon points="946,130 938,150 954,150" fill="white"/>
+      <!-- Centre clock tower -->
+      <rect x="906" y="116" width="22" height="46" fill="white" mask="url(#ebClock)"/>
+      <rect x="908" y="104" width="18" height="14" fill="white"/>
+      <!-- East block clock face rims -->
+      <circle cx="912" cy="116" r="7" fill="none" stroke="white" stroke-width="1.2"/>
+      <circle cx="924" cy="116" r="7" fill="none" stroke="white" stroke-width="1.2"/>
+      <!-- East block clock hands -->
+      <line x1="912" y1="116" x2="912" y2="110" stroke="white" stroke-width="1.5" fill="none"/>
+      <line x1="912" y1="116" x2="917" y2="116" stroke="white" stroke-width="1.2" fill="none"/>
+      <line x1="924" y1="116" x2="924" y2="110" stroke="white" stroke-width="1.5" fill="none"/>
+      <line x1="924" y1="116" x2="929" y2="116" stroke="white" stroke-width="1.2" fill="none"/>
+      <!-- East block tower spire -->
+      <polygon points="917,90 908,104 926,104" fill="white"/>
+      <rect x="916" y="84"  width="2" height="8" fill="white"/>
+      <rect x="918" y="84"  width="8" height="5" fill="white"/>
+      <!-- Windows -->
+      <rect x="890" y="168" width="9" height="13" fill="#0d0d0d"/>
+      <rect x="906" y="168" width="9" height="13" fill="#0d0d0d"/>
+      <rect x="922" y="168" width="9" height="13" fill="#0d0d0d"/>
+      <rect x="938" y="168" width="9" height="13" fill="#0d0d0d"/>
+
+      <!-- Transition right -->
+      <rect x="958" y="178" width="18" height="102" fill="white"/>
+      <rect x="960" y="170" width="14" height="8"   fill="white"/>
+      <rect x="978" y="185" width="16" height="95"  fill="white"/>
+      <rect x="996" y="172" width="22" height="108" fill="white"/>
+      <rect x="998" y="164" width="18" height="9"   fill="white"/>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- CONFEDERATION BUILDING                    -->
+      <!-- ═══════════════════════════════════════════ -->
+      <rect x="1020" y="150" width="60" height="130" fill="white"/>
+      <polygon points="1020,150 1050,126 1080,150" fill="white"/>
+      <rect x="1016" y="140" width="16" height="90" fill="white"/>
+      <polygon points="1016,140 1024,120 1032,140" fill="white"/>
+      <rect x="1068" y="144" width="16" height="86" fill="white"/>
+      <polygon points="1068,144 1076,124 1084,144" fill="white"/>
+      <!-- Centre tower + spire -->
+      <rect x="1040" y="112" width="20" height="40" fill="white"/>
+      <rect x="1042" y="102" width="16" height="12" fill="white"/>
+      <polygon points="1050,86 1042,102 1058,102" fill="white"/>
+      <rect x="1049" y="80"  width="2"  height="8"  fill="white"/>
+      <rect x="1051" y="80"  width="8"  height="5"  fill="white"/>
+      <rect x="1026" y="160" width="9" height="13" fill="#0d0d0d"/>
+      <rect x="1042" y="160" width="9" height="13" fill="#0d0d0d"/>
+      <rect x="1058" y="160" width="9" height="13" fill="#0d0d0d"/>
+      <rect x="1072" y="160" width="9" height="13" fill="#0d0d0d"/>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- SUPREME COURT OF CANADA                  -->
+      <!-- ═══════════════════════════════════════════ -->
+      <rect x="1090" y="155" width="70" height="125" fill="white"/>
+      <!-- Art deco stepped roofline -->
+      <polygon points="1090,155 1125,130 1160,155" fill="white"/>
+      <!-- Flanking pavilion towers -->
+      <rect x="1085" y="142" width="18" height="90" fill="white"/>
+      <polygon points="1085,142 1094,120 1103,142" fill="white"/>
+      <rect x="1157" y="146" width="18" height="86" fill="white"/>
+      <polygon points="1157,146 1166,124 1175,146" fill="white"/>
+      <!-- Centre feature tower + spire -->
+      <rect x="1110" y="118" width="30" height="40" fill="white"/>
+      <rect x="1114" y="108" width="22" height="12" fill="white"/>
+      <polygon points="1125,92 1114,108 1136,108" fill="white"/>
+      <rect x="1124" y="86"  width="2"  height="8"  fill="white"/>
+      <rect x="1126" y="86"  width="8"  height="5"  fill="white"/>
+      <rect x="1096" y="164" width="9" height="13" fill="#0d0d0d"/>
+      <rect x="1112" y="164" width="9" height="13" fill="#0d0d0d"/>
+      <rect x="1128" y="164" width="9" height="13" fill="#0d0d0d"/>
+      <rect x="1144" y="164" width="9" height="13" fill="#0d0d0d"/>
+      <rect x="1158" y="164" width="9" height="13" fill="#0d0d0d"/>
+
+      <!-- ═══════════════════════════════════════════ -->
+      <!-- FAR RIGHT BUILDINGS                       -->
+      <!-- ═══════════════════════════════════════════ -->
+      <rect x="1180" y="180" width="18" height="100" fill="white"/>
+      <rect x="1182" y="172" width="14" height="8"   fill="white"/>
+      <rect x="1200" y="188" width="16" height="92"  fill="white"/>
+      <polygon points="1226,158 1223,182 1229,182" fill="white"/>
+      <rect x="1222" y="182" width="14" height="20"  fill="white"/>
+      <rect x="1218" y="202" width="22" height="78"  fill="white"/>
+      <rect x="1244" y="182" width="18" height="98"  fill="white"/>
+      <rect x="1246" y="174" width="14" height="8"   fill="white"/>
+      <rect x="1264" y="190" width="16" height="90"  fill="white"/>
+      <rect x="1282" y="176" width="22" height="104" fill="white"/>
+      <rect x="1284" y="168" width="18" height="8"   fill="white"/>
+      <rect x="1306" y="185" width="18" height="95"  fill="white"/>
+      <rect x="1326" y="178" width="20" height="102" fill="white"/>
+      <rect x="1328" y="170" width="16" height="8"   fill="white"/>
+      <rect x="1348" y="192" width="16" height="88"  fill="white"/>
+      <rect x="1366" y="182" width="18" height="98"  fill="white"/>
+      <rect x="1368" y="174" width="14" height="8"   fill="white"/>
+      <rect x="1386" y="190" width="14" height="90"  fill="white"/>
+
+      <!-- GROUND LINE -->
+      <rect x="0" y="276" width="1400" height="3" fill="white" opacity="0.3"/>
     </svg>
+  </div>
   </div>
 
   <div class="container">
