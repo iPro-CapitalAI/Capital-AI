@@ -584,7 +584,7 @@ footer { padding:24px 0; border-top:0.5px solid var(--border); }
       <div class="fallback-contacts reveal d3">
         <a href="tel:+16138540929" class="fallback-contact">613-854-0929</a>
         <span class="fallback-sep" aria-hidden="true">|</span>
-        <a href="/cdn-cgi/l/email-protection#6f070a0303002f0c0e1f061b0e030e06410c0e" class="fallback-contact"><span class="__cf_email__" data-cfemail="98f0fdf4f4f7d8fbf9e8f1ecf9f4f9f1b6fbf9">[email&#160;protected]</span></a>
+        <a href="mailto:hello@capitalai.ca" class="fallback-contact">hello@capitalai.ca</a>
       </div>
     </div>
   </div>
@@ -623,4 +623,12 @@ footer { padding:24px 0; border-top:0.5px solid var(--border); }
   }
 
   /* Smooth anchors */
-  document.querySelectorAll('a[href^="#"]').forEach(a =>
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+</script>
+</body>
+</html>
