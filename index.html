@@ -917,7 +917,7 @@
 </section>
 
 <!-- ⑤ FINAL CTA -->
-<section class="final-cta reveal" id="audit" aria-label="Book a free audit">
+<section class="final-cta" id="audit" aria-label="Book a free audit">
   <div class="final-cta-bg" aria-hidden="true"></div>
   <div class="container">
     <div class="final-cta-inner">
@@ -979,13 +979,14 @@
     });
   }, { threshold: 0.05 });
   revealEls.forEach(el => observer.observe(el));
+  setTimeout(() => { revealEls.forEach(el => { const r = el.getBoundingClientRect(); if (r.top < window.innerHeight) el.classList.add('visible'); }); }, 100);
 
   /* Form — basic client validation + success state */
   const form = document.getElementById('audit-form');
   if (form) {
     form.addEventListener('submit', function(e) {
       const action = form.getAttribute('action');
-      if (action.includes('xaqplgpz')) {
+      if (action.includes('YOUR_FORM_ID')) {
         e.preventDefault();
         const btn = form.querySelector('.form-submit');
         btn.textContent = 'Form not configured yet.';
