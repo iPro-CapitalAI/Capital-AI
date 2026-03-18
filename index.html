@@ -977,22 +977,25 @@
         observer.unobserve(e.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.05 });
   revealEls.forEach(el => observer.observe(el));
 
   /* Form — basic client validation + success state */
   const form = document.getElementById('audit-form');
   if (form) {
-    form.addEventListener('submit', async function(e) {
+    form.addEventListener('submit', function(e) {
       const action = form.getAttribute('action');
-      if (action.includes('xaqplgpz')) {
+      if (action.includes('YOUR_FORM_ID')) {
         e.preventDefault();
         const btn = form.querySelector('.form-submit');
-        btn.textContent = 'Sent! Check your inbox.';
-        btn.style.background = '#1D9E75';
+        btn.textContent = 'Form not configured yet.';
+        btn.style.background = '#888';
         btn.disabled = true;
         return;
       }
+      const btn = form.querySelector('.form-submit');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
     });
   }
 
