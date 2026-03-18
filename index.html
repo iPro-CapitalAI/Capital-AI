@@ -825,7 +825,7 @@
 </section>
 
 <!-- ③ PROOF -->
-<section class="proof reveal" aria-label="Credentials and proof">
+<section class="proof" aria-label="Credentials and proof">
   <div class="container">
     <div class="proof-badges">
       <div class="proof-badge">
@@ -860,7 +860,7 @@
 </section>
 
 <!-- ④ SERVICES -->
-<section class="services reveal" id="services" aria-label="Services">
+<section class="services" id="services" aria-label="Services">
   <div class="container">
     <div class="section-header">
       <p class="section-eyebrow">What we fix</p>
@@ -928,6 +928,8 @@
       </p>
 
       <form class="audit-form" action="https://formspree.io/f/xaqplgpz" method="POST" id="audit-form" novalidate>
+        <input type="hidden" name="_subject" value="New AI Audit Request — capitalai.ca">
+        <input type="hidden" name="_next" value="https://www.capitalai.ca/#audit">
         <div class="form-field">
           <label for="name">Name</label>
           <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name">
