@@ -53,7 +53,7 @@
   --red: #C0392B; --red-dark: #96281B;
   --bg: #0d0d0d; --bg2: #141414; --bg3: #1a1a1a;
   --border: rgba(255,255,255,0.07); --border-strong: rgba(255,255,255,0.13);
-  --text: #f0ece4; --text-2: #a09a90; --text-3: #5a554e; --accent: #e8d5b0;
+  --text: #f0ece4; --text-2: #a09a90; --text-3: #827e7a; --accent: #e8d5b0;
   --font-display: 'Syne', 'Arial Black', system-ui, sans-serif; --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 html { scroll-behavior: smooth; }
@@ -75,6 +75,14 @@ body { background: var(--bg); color: var(--text); font-family: var(--font-body);
 @media (prefers-reduced-motion: reduce) {
   *,*::before,*::after { animation-duration:0.3s !important; transition-duration:0.2s !important; animation-iteration-count:1 !important; }
 }
+
+/* SKIP LINK — WCAG 2.4.1 */
+.skip-link { position:absolute; top:-100px; left:16px; z-index:999; background:var(--red); color:#fff; font-family:var(--font-body); font-size:14px; font-weight:500; padding:10px 18px; border-radius:6px; text-decoration:none; transition:top 0.2s; }
+.skip-link:focus { top:8px; }
+
+/* FOCUS RING — WCAG 2.4.7 — red glow matches brand, visible on dark bg */
+:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; border-radius: 3px; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
 
 /* SCROLL REVEAL */
 .reveal { opacity:0; transform:translateY(22px); transition:opacity 0.65s ease, transform 0.65s ease; }
@@ -107,7 +115,7 @@ nav { position:sticky; top:0; z-index:100; background:rgba(13,13,13,0.96); backd
 .hero-skyline svg { width:100%; height:100%; }
 
 .hero-inner { position:relative; text-align:center; max-width:800px; margin:0 auto; z-index:2; text-shadow: 0 2px 20px rgba(0,0,0,0.8), 0 0 40px rgba(13,13,13,0.9); }
-.hero-eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--red); background:rgba(192,57,43,0.1); border:0.5px solid rgba(192,57,43,0.3); border-radius:4px; padding:5px 12px; margin-bottom:28px; animation:fadeUp 0.6s 0.6s both; }
+.hero-eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); background:rgba(192,57,43,0.22); border:0.5px solid rgba(192,57,43,0.5); border-radius:4px; padding:5px 12px; margin-bottom:28px; animation:fadeUp 0.6s 0.6s both; }
 .hero-eyebrow::before { content:''; width:5px; height:5px; background:var(--red); border-radius:50%; animation:pulse 2s infinite; }
 .hero-headline { font-family:var(--font-display); font-size:clamp(36px,6vw,68px); font-weight:800; line-height:1.03; letter-spacing:-0.03em; color:var(--text); margin-bottom:18px; }
 .hero-headline em { font-style:normal; color:var(--red); }
@@ -209,6 +217,7 @@ footer { padding:24px 0; border-top:0.5px solid var(--border); }
 </style>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <!-- NAV -->
 <nav>
@@ -229,6 +238,7 @@ footer { padding:24px 0; border-top:0.5px solid var(--border); }
 </nav>
 
 <!-- HERO -->
+<main id="main-content">
 <section class="hero" aria-label="Hero">
   <div class="hero-grid-bg" aria-hidden="true"></div>
   <div class="hero-red-streak" aria-hidden="true"></div>
@@ -464,7 +474,7 @@ footer { padding:24px 0; border-top:0.5px solid var(--border); }
       </div>
       <p class="hero-fine">No pitch. No credit card.</p>
       <div class="hero-locale" aria-label="Service area">
-        <svg width="16" height="11" viewBox="0 0 16 11" fill="none" aria-hidden="true">
+        <svg width="16" height="11" viewBox="0 0 16 11" fill="none" aria-hidden="true" focusable="false">
           <rect width="16" height="11" fill="#D52B1E"/>
           <rect x="4" width="8" height="11" fill="white"/>
           <path d="M8 2.5L8.7 4.6H11L9.15 5.9L9.85 8L8 6.7L6.15 8L6.85 5.9L5 4.6H7.3L8 2.5Z" fill="#D52B1E"/>
@@ -519,28 +529,28 @@ footer { padding:24px 0; border-top:0.5px solid var(--border); }
     <div class="services-grid">
       <div class="service-card featured reveal">
         <div class="service-icon icon-red" aria-hidden="true">
-          <svg viewBox="0 0 16 16" fill="none" stroke="#C0392B" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1.5"/></svg>
+          <svg viewBox="0 0 16 16" fill="none" stroke="#C0392B" aria-hidden="true" focusable="false" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1.5"/></svg>
         </div>
         <div class="service-title">AI citation optimization</div>
         <div class="service-outcome">Get cited by Perplexity + ChatGPT — not just ranked by Google. Schema, content structure, entity coverage.</div>
       </div>
       <div class="service-card reveal d1">
         <div class="service-icon icon-blue" aria-hidden="true">
-          <svg viewBox="0 0 16 16" fill="none" stroke="#378ADD" stroke-width="1.5" stroke-linecap="round"><path d="M3 8h10M8 3v10"/><rect x="2" y="2" width="12" height="12" rx="2"/></svg>
+          <svg viewBox="0 0 16 16" fill="none" stroke="#378ADD" aria-hidden="true" focusable="false" stroke-width="1.5" stroke-linecap="round"><path d="M3 8h10M8 3v10"/><rect x="2" y="2" width="12" height="12" rx="2"/></svg>
         </div>
         <div class="service-title">Bilingual web builds</div>
         <div class="service-outcome">Rank French + English — one build, zero duplicate-content penalties. Proper hreflang, parity content, FR meta.</div>
       </div>
       <div class="service-card reveal d2">
         <div class="service-icon icon-green" aria-hidden="true">
-          <svg viewBox="0 0 16 16" fill="none" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round"><path d="M2 12l4-4 3 3 5-6"/></svg>
+          <svg viewBox="0 0 16 16" fill="none" stroke="#1D9E75" aria-hidden="true" focusable="false" stroke-width="1.5" stroke-linecap="round"><path d="M2 12l4-4 3 3 5-6"/></svg>
         </div>
         <div class="service-title">SEO + AI hybrid</div>
         <div class="service-outcome">Own Google page 1 and AI answers — not one or the other. Keyword strategy built for both traditional and generative search.</div>
       </div>
       <div class="service-card reveal d3">
         <div class="service-icon icon-amber" aria-hidden="true">
-          <svg viewBox="0 0 16 16" fill="none" stroke="#BA7517" stroke-width="1.5" stroke-linecap="round"><path d="M8 2v12M4 6l4-4 4 4M4 10h8"/></svg>
+          <svg viewBox="0 0 16 16" fill="none" stroke="#BA7517" aria-hidden="true" focusable="false" stroke-width="1.5" stroke-linecap="round"><path d="M8 2v12M4 6l4-4 4 4M4 10h8"/></svg>
         </div>
         <div class="service-title">Full retainer</div>
         <div class="service-outcome">Schema, content, citations — done for you. Monthly results report with GSC + Perplexity citation tracking included.</div>
@@ -567,11 +577,11 @@ footer { padding:24px 0; border-top:0.5px solid var(--border); }
         <input type="hidden" name="_next" value="https://www.capitalai.ca/#audit">
         <div class="form-field">
           <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name">
+          <input type="text" id="name" name="name" placeholder="Your name" required aria-required="true" autocomplete="name">
         </div>
         <div class="form-field">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="you@yourbusiness.com" required autocomplete="email">
+          <input type="email" id="email" name="email" placeholder="you@yourbusiness.com" required aria-required="true" autocomplete="email">
         </div>
         <div class="form-field">
           <div class="form-field-optional">
@@ -594,6 +604,7 @@ footer { padding:24px 0; border-top:0.5px solid var(--border); }
 </section>
 
 <!-- FOOTER -->
+</main>
 <footer>
   <div class="container">
     <div class="footer-inner">
