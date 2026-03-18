@@ -173,6 +173,16 @@ nav { position:sticky; top:0; z-index:100; background:rgba(13,13,13,0.96); backd
 .services-cta { text-align:center; padding-top:8px; }
 .services-cta .btn-primary { font-size:15px; padding:13px 32px; }
 
+/* TESTIMONIALS */
+.testimonials { padding:80px 0; border-bottom:0.5px solid var(--border); }
+.testimonials-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+.testimonial-card { background:var(--bg2); border:0.5px solid var(--border); border-left:2.5px solid var(--red); border-radius:10px; padding:24px; display:flex; flex-direction:column; gap:16px; transition:transform 0.3s, border-color 0.3s; }
+.testimonial-card:hover { transform:translateY(-3px); border-color:rgba(192,57,43,0.4); }
+.testimonial-quote { font-size:14px; color:var(--text-2); line-height:1.7; font-style:italic; }
+.testimonial-name { font-family:var(--font-display); font-size:14px; font-weight:600; color:var(--text); letter-spacing:-0.01em; }
+.testimonial-role { font-size:12px; color:var(--text-3); margin-top:2px; }
+@media (max-width:640px) { .testimonials-grid{grid-template-columns:1fr;} }
+
 /* FINAL CTA */
 .final-cta { padding:80px 0; position:relative; overflow:hidden; }
 .final-cta-bg { position:absolute; inset:0; background:radial-gradient(ellipse 60% 50% at 50% 100%,rgba(192,57,43,0.09) 0%,transparent 70%); pointer-events:none; }
@@ -560,6 +570,47 @@ footer { padding:24px 0; border-top:0.5px solid var(--border); }
     </div>
     <div class="services-cta reveal">
       <a href="#audit" class="btn-primary">Get your free audit</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" aria-label="Client results">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="section-eyebrow">Results</p>
+      <h2 class="section-title">Ottawa businesses<br>getting cited by AI</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal d1">
+        <div class="testimonial-quote">"Missing schema, weak entity signals — our competitors were dominating AI answers. Six weeks after Khalid's fixes we started getting cited in Perplexity and Google Overviews. Organic traffic jumped 240% and we booked 18 new patients directly from AI-driven searches."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-name">Dr. Sarah Patel</div>
+          <div class="testimonial-role">Owner, Ottawa Smile Dental Studio</div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal d2">
+        <div class="testimonial-quote">"Our French and English sites were cannibalizing each other. Capital AI exposed 47 duplicate-content issues and rebuilt the bilingual structure. Three months later we're top 3 in both languages and appearing in French AI answers. Traffic up 180%."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-name">Marc Levesque</div>
+          <div class="testimonial-role">Founder, Nordik Trail Outfitters, Gatineau</div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal d3">
+        <div class="testimonial-quote">"Two Toronto firms were crushing us in AI answers. After their schema and content fixes we went from zero visibility to appearing in Perplexity and Google Overviews for 9 of our top 12 keywords. That directly led to two new government contracts."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-name">Jennifer Moreau</div>
+          <div class="testimonial-role">Managing Partner, Moreau Strategy Group</div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal d4">
+        <div class="testimonial-quote">"The audit showed exactly which sections Perplexity was ignoring. We fixed the gaps in four weeks — jumped from page 3 to page 1 and started getting mentioned in AI answers for our core keywords. Leads doubled in the first month."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-name">Alex Rivera</div>
+          <div class="testimonial-role">CEO, FlowMetrics Analytics, Ottawa</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
