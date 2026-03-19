@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capital AI Chat Widget</title>
+<style>
+body{margin:0;background:#0d0d0d;min-height:100vh;}
+.preview-note{position:fixed;top:16px;left:50%;transform:translateX(-50%);background:rgba(192,57,43,0.15);border:0.5px solid rgba(192,57,43,0.4);color:#e8d5b0;font-size:12px;padding:8px 16px;border-radius:20px;z-index:9998;white-space:nowrap;font-family:system-ui,sans-serif;}
+#cap-chat-widget *{box-sizing:border-box;margin:0;padding:0;}
+#cap-btn{position:fixed;bottom:28px;right:28px;z-index:9999;width:56px;height:56px;border-radius:50%;background:#C0392B;border:none;cursor:pointer;box-shadow:0 4px 24px rgba(192,57,43,0.45);display:flex;align-items:center;justify-content:center;transition:transform .2s,box-shadow .2s;animation:capPulse 3s 2s infinite;}
+#cap-btn:hover{transform:scale(1.08);box-shadow:0 6px 32px rgba(192,57,43,0.6);}
+#cap-btn svg{width:24px;height:24px;fill:white;transition:opacity .2s;}
+#cap-btn .ico-close{display:none;}
+@keyframes capPulse{0%,100%{box-shadow:0 4px 24px rgba(192,57,43,0.45);}50%{box-shadow:0 4px 32px rgba(192,57,43,0.75),0 0 0 8px rgba(192,57,43,0.1);}}
+#cap-panel{position:fixed;bottom:96px;right:28px;z-index:9999;width:380px;max-height:560px;background:#141414;border:0.5px solid rgba(255,255,255,0.1);border-radius:16px;display:flex;flex-direction:column;box-shadow:0 24px 64px rgba(0,0,0,0.7),0 0 0 0.5px rgba(192,57,43,0.2);transform:translateY(16px) scale(0.97);opacity:0;pointer-events:none;transition:transform .25s cubic-bezier(.34,1.56,.64,1),opacity .2s;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}
+#cap-panel.open{transform:translateY(0) scale(1);opacity:1;pointer-events:all;}
+.cap-hdr{padding:16px 18px;border-bottom:0.5px solid rgba(255,255,255,0.07);display:flex;align-items:center;gap:12px;border-radius:16px 16px 0 0;background:linear-gradient(135deg,rgba(192,57,43,0.12),transparent);}
+.cap-av{width:36px;height:36px;border-radius:50%;background:rgba(192,57,43,0.2);border:1.5px solid rgba(192,57,43,0.5);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cap-av svg{width:18px;height:18px;fill:#C0392B;}
+.cap-hdr-name{font-size:14px;font-weight:600;color:#f0ece4;letter-spacing:-.01em;}
+.cap-hdr-status{font-size:11px;color:#827e7a;display:flex;align-items:center;gap:5px;margin-top:2px;}
+.cap-dot{width:6px;height:6px;border-radius:50%;background:#27ae60;animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+.cap-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;max-height:360px;scroll-behavior:smooth;}
+.cap-msgs::-webkit-scrollbar{width:4px;}
+.cap-msgs::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:2px;}
+.cap-msg{display:flex;gap:8px;animation:msgIn .3s ease;}
+@keyframes msgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.cap-msg.user{flex-direction:row-reverse;}
+.cap-bbl{max-width:82%;padding:10px 13px;border-radius:12px;font-size:13.5px;line-height:1.55;color:#f0ece4;}
+.cap-msg.bot .cap-bbl{background:#1a1a1a;border:0.5px solid rgba(255,255,255,0.08);border-radius:4px 12px 12px 12px;}
+.cap-msg.user .cap-bbl{background:#C0392B;border-radius:12px 4px 12px 12px;color:#fff;}
+.cap-typing{display:flex;align-items:center;gap:4px;padding:12px 13px;}
+.cap-typing span{width:6px;height:6px;border-radius:50%;background:#827e7a;animation:dot 1.2s infinite;}
+.cap-typing span:nth-child(2){animation-delay:.2s;}
+.cap-typing span:nth-child(3){animation-delay:.4s;}
+@keyframes dot{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+.cap-chips{padding:0 16px 12px;display:flex;flex-wrap:wrap;gap:6px;}
+.cap-chip{font-size:11.5px;color:#a09a90;background:rgba(255,255,255,0.05);border:0.5px solid rgba(255,255,255,0.1);border-radius:20px;padding:5px 11px;cursor:pointer;transition:all .2s;}
+.cap-chip:hover{color:#f0ece4;border-color:rgba(192,57,43,0.4);background:rgba(192,57,43,0.08);}
+.cap-irow{padding:12px 14px;border-top:0.5px solid rgba(255,255,255,0.07);display:flex;gap:8px;align-items:flex-end;border-radius:0 0 16px 16px;}
+#cap-input{flex:1;background:rgba(255,255,255,0.05);border:0.5px solid rgba(255,255,255,0.1);border-radius:10px;padding:9px 12px;font-size:13.5px;color:#f0ece4;font-family:inherit;outline:none;resize:none;min-height:38px;max-height:100px;transition:border-color .2s;line-height:1.4;}
+#cap-input::placeholder{color:#4a4540;}
+#cap-input:focus{border-color:rgba(192,57,43,0.4);}
+#cap-send{width:36px;height:36px;border-radius:9px;background:#C0392B;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .15s;flex-shrink:0;}
+#cap-send:hover{background:#962b1b;transform:scale(1.05);}
+#cap-send:disabled{background:#2a2a2a;cursor:not-allowed;transform:none;}
+#cap-send svg{width:16px;height:16px;fill:white;}
+.cap-footer{text-align:center;padding:6px 0 10px;font-size:10px;color:#3a3530;}
+.cap-setup{padding:20px;display:flex;flex-direction:column;gap:12px;}
+.cap-setup p{font-size:13px;color:#a09a90;line-height:1.5;}
+.cap-setup input{background:rgba(255,255,255,0.05);border:0.5px solid rgba(255,255,255,0.15);border-radius:8px;padding:10px 12px;font-size:13px;color:#f0ece4;font-family:inherit;outline:none;width:100%;transition:border-color .2s;}
+.cap-setup input:focus{border-color:rgba(192,57,43,0.5);}
+.cap-setup button{background:#C0392B;color:white;border:none;border-radius:8px;padding:10px;font-size:13px;font-weight:500;cursor:pointer;transition:background .2s;}
+.cap-setup button:hover{background:#962b1b;}
+@media(max-width:440px){#cap-panel{width:calc(100vw - 24px);right:12px;bottom:84px;}#cap-btn{right:16px;bottom:20px;}}
+</style>
+</head>
+<body>
+<div class="preview-note">Widget preview — click the red button bottom-right</div>
+<div id="cap-chat-widget">
+  <button id="cap-btn" aria-label="Chat with Capital AI">
+    <svg class="ico-chat" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/></svg>
+    <svg class="ico-close" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+  </button>
+  <div id="cap-panel" role="dialog" aria-label="Capital AI Chat">
+    <div class="cap-hdr">
+      <div class="cap-av"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+      <div><div class="cap-hdr-name">Capital AI Assistant</div><div class="cap-hdr-status"><span class="cap-dot"></span> AI SEO expert · Ottawa</div></div>
+    </div>
+    <div class="cap-setup" id="cap-setup">
+      <p>Enter your Anthropic API key to activate. Stored in your browser only.</p>
+      <input id="cap-key" type="password" placeholder="sk-ant-api03-...">
+      <button id="cap-key-save">Activate Chat</button>
+    </div>
+    <div class="cap-msgs" id="cap-msgs" style="display:none"></div>
+    <div class="cap-chips" id="cap-chips" style="display:none">
+      <button class="cap-chip" onclick="capChip(this)">Am I invisible to AI search?</button>
+      <button class="cap-chip" onclick="capChip(this)">What does an audit include?</button>
+      <button class="cap-chip" onclick="capChip(this)">How long does it take?</button>
+      <button class="cap-chip" onclick="capChip(this)">Do you work in French?</button>
+    </div>
+    <div class="cap-irow" id="cap-irow" style="display:none">
+      <textarea id="cap-input" placeholder="Ask about AI SEO..." rows="1"></textarea>
+      <button id="cap-send" disabled><svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button>
+    </div>
+    <div class="cap-footer" id="cap-footer" style="display:none">Powered by Capital AI · capitalai.ca</div>
+  </div>
+</div>
+<script>
+(function(){
+const SYSTEM = `You are the Capital AI Assistant — the no-BS AI SEO strategist for Capital AI, an Ottawa agency run by Khalid (Khal) Mohamed.
+
+TONE & STYLE:
+- Confident, direct, authoritative. You know this space cold — speak like it.
+- Short punchy responses. No filler, no hedging, no "great question!"
+- Plain language by default; go technical only when the user does.
+- Quick to offer value. Drop the free audit naturally, never as a hard sell.
+- Never impatient, never frustrated, never sycophantic.
+- If someone pushes back or is skeptical, meet them with calm confidence — not defensiveness.
+- 2-3 sentences per point max. Get in, give value, get out.
+
+ABOUT CAPITAL AI:
+- Ottawa's AI citation optimization agency
+- Founded by Khalid (Khal) — ex-federal web developer, bilingual EN/FR
+- Services: AI citation optimization, bilingual web builds, SEO + AI hybrid, full retainer
+- Free 15-min AI visibility audit — no pitch, no credit card
+- Phone: 613-854-0929 | Email: hello@capitalai.ca
+- Serves Ottawa, Gatineau, NCR
+
+WHAT YOU KNOW:
+- Why most Ottawa sites are invisible to AI: missing schema, weak entity signals, poor content structure, no proper hreflang for bilingual sites
+- What fixes AI visibility: LocalBusiness schema, FAQ schema, entity coverage, structured headings, authoritative citations
+- Google Overviews vs traditional SEO: you need BOTH — page 1 AND AI citations
+- Bilingual SEO: hreflang, content parity, separate FR signals — common failure point for Ottawa/Gatineau businesses
+- Typical results: 150-240% traffic increases, citations appear in 3-8 weeks post-fix
+- Ottawa/NCR market: WCAG accessibility, Treasury Board compliance, bilingual requirements
+
+WHEN TO SUGGEST THE AUDIT:
+- When someone describes a specific visibility problem
+- When they ask about pricing or timelines
+- After 2+ questions (they are engaged)
+- Say: "Want me to check your site? Free 15-min audit — shows exactly what's blocking you."
+
+WHAT YOU DON'T DO:
+- Don't make up metrics for their specific site
+- Don't promise exact rankings or timelines
+- Don't name competitors
+- If asked something off-topic, redirect briefly and move on`;
+
+let open=false, apiKey=localStorage.getItem('cap_k')||'', msgs=[], busy=false;
+const btn=document.getElementById('cap-btn'),
+      panel=document.getElementById('cap-panel'),
+      msgsEl=document.getElementById('cap-msgs'),
+      input=document.getElementById('cap-input'),
+      send=document.getElementById('cap-send'),
+      chips=document.getElementById('cap-chips'),
+      irow=document.getElementById('cap-irow'),
+      footer=document.getElementById('cap-footer'),
+      setup=document.getElementById('cap-setup'),
+      keyInput=document.getElementById('cap-key'),
+      keySave=document.getElementById('cap-key-save');
+
+btn.addEventListener('click',()=>{
+  open=!open;
+  panel.classList.toggle('open',open);
+  btn.querySelector('.ico-chat').style.display=open?'none':'block';
+  btn.querySelector('.ico-close').style.display=open?'block':'none';
+  if(open&&apiKey&&msgs.length===0)welcome();
+  if(open&&apiKey)setTimeout(()=>input.focus(),300);
+});
+
+if(apiKey)activate();
+
+keySave.addEventListener('click',()=>{
+  const k=keyInput.value.trim();
+  if(!k.startsWith('sk-ant-')){keyInput.style.borderColor='rgba(192,57,43,0.8)';return;}
+  apiKey=k;localStorage.setItem('cap_k',k);activate();welcome();setTimeout(()=>input.focus(),100);
+});
+keyInput.addEventListener('keydown',e=>{if(e.key==='Enter')keySave.click();});
+
+function activate(){setup.style.display='none';msgsEl.style.display='flex';chips.style.display='flex';irow.style.display='flex';footer.style.display='block';}
+
+function welcome(){addMsg('bot',"What's going on with your site's AI visibility? Tell me the problem — or ask me anything about AI search, schema, bilingual SEO, whatever's on your mind.");}
+
+async function sendMsg(text){
+  if(!text.trim()||busy)return;
+  chips.style.display='none';
+  addMsg('user',text);
+  msgs.push({role:'user',content:text});
+  input.value='';input.style.height='auto';send.disabled=true;busy=true;
+  const tid=showTyping();
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1024,system:SYSTEM,messages:msgs})
+    });
+    removeTyping(tid);
+    if(!res.ok){
+      const e=await res.json();
+      if(res.status===401){addMsg('bot','API key invalid. Refresh and re-enter a valid key.');localStorage.removeItem('cap_k');}
+      else addMsg('bot','Something went wrong. Try again in a moment.');
+      return;
+    }
+    const d=await res.json();
+    const reply=d.content[0].text;
+    msgs.push({role:'assistant',content:reply});
+    addMsg('bot',reply);
+  }catch(e){removeTyping(tid);addMsg('bot','Network error — check your connection.');}
+  finally{busy=false;send.disabled=false;input.focus();}
+}
+
+function addMsg(role,text){
+  const m=document.createElement('div');m.className='cap-msg '+role;
+  const b=document.createElement('div');b.className='cap-bbl';b.textContent=text;
+  m.appendChild(b);msgsEl.appendChild(m);msgsEl.scrollTop=msgsEl.scrollHeight;
+}
+function showTyping(){
+  const id='t'+Date.now(),m=document.createElement('div');
+  m.className='cap-msg bot';m.id=id;
+  m.innerHTML='<div class="cap-bbl cap-typing"><span></span><span></span><span></span></div>';
+  msgsEl.appendChild(m);msgsEl.scrollTop=msgsEl.scrollHeight;return id;
+}
+function removeTyping(id){const e=document.getElementById(id);if(e)e.remove();}
+
+input.addEventListener('input',()=>{send.disabled=!input.value.trim();input.style.height='auto';input.style.height=Math.min(input.scrollHeight,100)+'px';});
+input.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg(input.value);}});
+send.addEventListener('click',()=>sendMsg(input.value));
+window.capChip=el=>sendMsg(el.textContent);
+})();
+</script>
+</body>
+</html>
