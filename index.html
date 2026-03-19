@@ -625,23 +625,24 @@ footer { padding:24px 0; border-top:0.5px solid var(--border); }
         Free 15-min audit shows exactly where AI is citing — or ignoring — your site, and what to fix first.<br>
         <em>No pitch. No credit card. Just a real audit.</em>
       </p>
-      <form class="audit-form reveal d2" action="https://formspree.io/f/xaqplgpz" method="POST" id="audit-form" novalidate>
+      <form class="audit-form reveal d2" action="https://formspree.io/f/xaqplgpz" method="POST" id="audit-form">
         <input type="hidden" name="_subject" value="New AI Audit Request — capitalai.ca">
         <input type="hidden" name="_next" value="https://www.capitalai.ca/#audit">
+                <input type="text" name="_gotcha" style="display:none!important" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="form-field">
           <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="Your name" required aria-required="true" autocomplete="name">
+          <input type="text" id="name" name="name" placeholder="Your name" required aria-required="true" autocomplete="name" maxlength="100">
         </div>
         <div class="form-field">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="you@yourbusiness.com" required aria-required="true" autocomplete="email">
+          <input type="email" id="email" name="email" placeholder="you@yourbusiness.com" required aria-required="true" autocomplete="email" maxlength="254">
         </div>
         <div class="form-field">
           <div class="form-field-optional">
             <label for="phone">Phone</label>
             <span class="optional-tag">optional</span>
           </div>
-          <input type="tel" id="phone" name="phone" placeholder="(555) 555-5555" autocomplete="tel">
+          <input type="tel" id="phone" name="phone" placeholder="(555) 555-5555" autocomplete="tel" maxlength="20">
           <p class="phone-note">We'll call you within 24h if preferred.</p>
         </div>
         <button type="submit" class="btn-primary form-submit">Claim free audit</button>
@@ -679,12 +680,48 @@ footer { padding:24px 0; border-top:0.5px solid var(--border); }
     reveals.forEach(el => { if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('visible'); });
   }, 120);
 
-  /* Form */
+  /* Form — validation + honeypot + spam protection */
   const form = document.getElementById('audit-form');
   if (form) {
-    form.addEventListener('submit', () => {
+    form.addEventListener('submit', (e) => {
+      const name = form.querySelector('#name').value.trim();
+      const email = form.querySelector('#email').value.trim();
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const honeypot = form.querySelector('input[name="_gotcha"]');
+
+      // Honeypot triggered — silent reject
+      if (honeypot && honeypot.value) { e.preventDefault(); return; }
+
+      // Name validation
+      if (!name || name.length < 2) {
+        e.preventDefault();
+        form.querySelector('#name').focus();
+        form.querySelector('#name').style.borderColor = 'rgba(192,57,43,0.8)';
+        return;
+      }
+
+      // Email validation
+      if (!email || !emailRe.test(email)) {
+        e.preventDefault();
+        form.querySelector('#email').focus();
+        form.querySelector('#email').style.borderColor = 'rgba(192,57,43,0.8)';
+        return;
+      }
+
+      // Rate limiting — prevent double submit
+      const lastSubmit = sessionStorage.getItem('cap_last_submit');
+      if (lastSubmit && Date.now() - parseInt(lastSubmit) < 30000) {
+        e.preventDefault(); return;
+      }
+      sessionStorage.setItem('cap_last_submit', Date.now());
+
       const btn = form.querySelector('.form-submit');
       btn.textContent = 'Sending...'; btn.disabled = true;
+    });
+
+    // Clear red borders on input
+    form.querySelectorAll('input').forEach(input => {
+      input.addEventListener('input', () => input.style.borderColor = '');
     });
   }
 
