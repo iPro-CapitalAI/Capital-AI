@@ -48,12 +48,6 @@ body{margin:0;background:#0d0d0d;min-height:100vh;}
 #cap-send:disabled{background:#222;cursor:not-allowed;transform:none;}
 #cap-send svg{width:19px;height:19px;fill:white;}
 .cap-footer{text-align:center;padding:10px 0 14px;font-size:11.5px;color:#3a3530;flex-shrink:0;}
-.cap-setup{padding:32px 28px;display:flex;flex-direction:column;gap:16px;}
-.cap-setup p{font-size:15px;color:#a09a90;line-height:1.6;}
-.cap-setup input{background:rgba(255,255,255,0.05);border:0.5px solid rgba(255,255,255,0.15);border-radius:12px;padding:14px 16px;font-size:15px;color:#f0ece4;font-family:inherit;outline:none;width:100%;transition:border-color .2s;}
-.cap-setup input:focus{border-color:rgba(192,57,43,0.5);}
-.cap-setup button{background:#C0392B;color:white;border:none;border-radius:12px;padding:15px;font-size:15px;font-weight:500;cursor:pointer;transition:background .2s;font-family:inherit;}
-.cap-setup button:hover{background:#962b1b;}
 @media(max-width:500px){#cap-panel{width:calc(100vw - 16px);right:8px;bottom:88px;border-radius:20px;}#cap-btn{right:16px;bottom:20px;}.cap-bbl{font-size:15px;}}
 </style>
 </head>
@@ -69,23 +63,19 @@ body{margin:0;background:#0d0d0d;min-height:100vh;}
       <div class="cap-av"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
       <div><div class="cap-hdr-name">Capital AI Assistant</div><div class="cap-hdr-status"><span class="cap-dot"></span> AI SEO expert · Ottawa</div></div>
     </div>
-    <div class="cap-setup" id="cap-setup">
-      <p>Enter your Anthropic API key to activate. Stored in your browser only.</p>
-      <input id="cap-key" type="password" placeholder="sk-ant-api03-...">
-      <button id="cap-key-save">Activate Chat</button>
-    </div>
-    <div class="cap-msgs" id="cap-msgs" style="display:none"></div>
-    <div class="cap-chips" id="cap-chips" style="display:none">
+
+    <div class="cap-msgs" id="cap-msgs"></div>
+    <div class="cap-chips" id="cap-chips">
       <button class="cap-chip" onclick="capChip(this)">Am I invisible to AI search?</button>
       <button class="cap-chip" onclick="capChip(this)">How is AI killing traditional SEO?</button>
       <button class="cap-chip" onclick="capChip(this)">What does the free audit find?</button>
       <button class="cap-chip" onclick="capChip(this)">My site is bilingual — help</button>
     </div>
-    <div class="cap-irow" id="cap-irow" style="display:none">
+    <div class="cap-irow" id="cap-irow">
       <textarea id="cap-input" placeholder="Ask about AI SEO..." rows="1"></textarea>
       <button id="cap-send" disabled><svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button>
     </div>
-    <div class="cap-footer" id="cap-footer" style="display:none">Powered by Capital AI · capitalai.ca</div>
+    <div class="cap-footer" id="cap-footer">Powered by Capital AI · capitalai.ca</div>
   </div>
 </div>
 <script>
@@ -122,7 +112,7 @@ You are not losing rankings — you are being removed from the customer journey 
 STRICT RULES:
 Never fabricate metrics for their specific site. Never promise exact rankings or timelines. Never name local competitors. If off-topic, one sentence redirect then move on. Never more than 4 sentences. Ever.'`;
 
-let open=false, apiKey=localStorage.getItem('cap_k')||'', msgs=[], busy=false;
+let open=false, msgs=[], busy=false;
 const btn=document.getElementById('cap-btn'),
       panel=document.getElementById('cap-panel'),
       msgsEl=document.getElementById('cap-msgs'),
@@ -131,29 +121,17 @@ const btn=document.getElementById('cap-btn'),
       chips=document.getElementById('cap-chips'),
       irow=document.getElementById('cap-irow'),
       footer=document.getElementById('cap-footer'),
-      setup=document.getElementById('cap-setup'),
-      keyInput=document.getElementById('cap-key'),
-      keySave=document.getElementById('cap-key-save');
+      dummy=null;
 
 btn.addEventListener('click',()=>{
   open=!open;
   panel.classList.toggle('open',open);
   btn.querySelector('.ico-chat').style.display=open?'none':'block';
   btn.querySelector('.ico-close').style.display=open?'block':'none';
-  if(open&&apiKey&&msgs.length===0)welcome();
-  if(open&&apiKey)setTimeout(()=>input.focus(),300);
+  if(open&&msgs.length===0)welcome();
+  if(open)setTimeout(()=>input.focus(),300);
 });
 
-if(apiKey)activate();
-
-keySave.addEventListener('click',()=>{
-  const k=keyInput.value.trim();
-  if(!k.startsWith('sk-ant-')){keyInput.style.borderColor='rgba(192,57,43,0.8)';return;}
-  apiKey=k;localStorage.setItem('cap_k',k);activate();welcome();setTimeout(()=>input.focus(),100);
-});
-keyInput.addEventListener('keydown',e=>{if(e.key==='Enter')keySave.click();});
-
-function activate(){setup.style.display='none';msgsEl.style.display='flex';chips.style.display='flex';irow.style.display='flex';footer.style.display='block';}
 
 function welcome(){addMsg('bot',"Most Ottawa businesses are invisible to AI search right now — and they have no idea. What's your site? Drop the URL and I'll tell you exactly where you stand.");}
 
@@ -163,18 +141,12 @@ async function sendMsg(text){
   addMsg('user',text);
   msgs.push({role:'user',content:text});
   input.value='';input.style.height='auto';send.disabled=true;busy=true;
-  const key=localStorage.getItem('cap_k')||'';
-  if(!key){
-    removeTyping(showTyping());
-    addMsg('bot','Chat is not configured yet — reach out directly at hello@capitalai.ca.');
-    send.disabled=false; busy=false; return;
-  }
   const tid=showTyping();
   try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{
+    const res=await fetch('/api/chat',{
       method:'POST',
-      headers:{'Content-Type':'application/json','x-api-key':apiKey,'anthropic-version':'2023-06-01','anthropic-dangerous-client-side-key-flag':'true'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1024,system:SYSTEM,messages:msgs})
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:400,system:SYSTEM,messages:msgs})
     });
     removeTyping(tid);
     if(!res.ok){
