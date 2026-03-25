@@ -1,0 +1,9 @@
+﻿# Enforce consistent line endings for web + markdown files
+* text=auto
+
+# Force HTML, JS, CSS, MD to LF (best for Vercel + GitHub)
+*.html text eol=lf
+*.js   text eol=lf
+*.css  text eol=lf
+*.md   text eol=lf
+*.json text eol=lf

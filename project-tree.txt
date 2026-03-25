@@ -1,0 +1,81 @@
+﻿Folder PATH listing
+Volume serial number is 00000009 BEFE:F814
+C:.
+|   chatbot.html
+|   index.html
+|   project-tree.txt
+|   vercel.json
+|   
++---agents
++---AI + SEO Stragies
+|   +---Case studies
+|   |       2026 Strategy.md
+|   |       Academic backing.md
+|   |       Case studies list - 2025-2026.md
+|   |       KrispCall’s area-code landing page strategy.md
+|   |       
+|   +---Inbound Marketing
+|   |       Engage phase of inbound marketing.md
+|   |       
+|   \---Strategy
+|           What Actually Works in 2026 - Evidence-Based Proof -Knowledge.md
+|           
++---api
+|       chat.js
+|       
++---Audit automation
+|       ai_audit_automation_workflow.html
+|       context.md
+|       First prompt provided.md
+|       instructions.md
+|       Production ready.md
+|       
++---blog
+|       self-hosted-ai-seo-2026.html
+|       
++---docker
++---docs
+|   +---AI-Instructions-Bank
+|   |       AGENTS.md
+|   |       STAGE-discovery.md
+|   |       
+|   +---CapitalAI_Context_Library
+|   |       apitalAI_Tone_Voice_Brand_Guide.md
+|   |       CapitalAI_Master_System_Prompt.md
+|   |       Case_Studies_Proof_Bible.md
+|   |       E-E-A-T_Originality_Guardrail_Checklist.md
+|   |       Engage_Tactics_Playbook.md
+|   |       Full_Automated_Strategy_Playbook.md
+|   |       GeoScale_Strategy_Bible.md
+|   |       Inbound_Flywheel_Guide.md
+|   |       Risks_Mitigation_&_FineTuning_Guide.md
+|   |       SelfHosted_Infra_Guide.md
+|   |       
+|   +---KNOWLEDGE BASE
+|   |       3-Way Sync Workflow.md
+|   |       CLAUDE.md
+|   |       Sync Claude and Grok with Khal.md
+|   |       
+|   +---NEW PROJECT INSTRUCTIONS
+|   |       Project Description.md
+|   |       Project Instructions.md
+|   |       Subject-Category.md
+|   |       
+|   \---PROJECT BREAKDOWN
+|           CapitalAI.ca — Project Breakdown.md
+|           SyncDesk.tsx
+|           
++---fonts
+|       dm-sans-v17-latin-300.woff2
+|       dm-sans-v17-latin-500.woff2
+|       dm-sans-v17-latin-regular.woff2
+|       dm-sans-v17-latin.zip
+|       syne-v24-latin-700.woff2
+|       syne-v24-latin-800.woff2
+|       syne-v24-latin2.zip
+|       
++---tools
+|   \---syncdesk
+|           SyncDesk.tsx
+|           
+\---workflows
