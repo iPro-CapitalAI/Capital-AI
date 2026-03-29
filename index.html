@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="form-action 'self' https://*.ngrok-free.dev https://formspree.io"> 
+<meta http-equiv="Content-Security-Policy" content="form-action 'self' https://formspree.io">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Capital AI – Ottawa AI-Powered SEO | Get Cited by ChatGPT &amp; Google</title>
@@ -670,7 +670,7 @@ footer { padding:24px 0; border-top:0.5px solid var(--border); }
         Free 15-min audit shows exactly where AI is citing — or ignoring — your site, and what to fix first.<br>
         <em>No pitch. No credit card. Just a real audit.</em>
       </p>
-      <form class="audit-form" action="https://driftier-glynis-believably.ngrok-free.dev/trigger-audit" method="POST" id="audit-form">
+      <form class="audit-form" action="https://formspree.io/f/mqabjnab" method="POST" id="audit-form">
         <input type="hidden" name="_subject" value="New AI Audit Request — capitalai.ca">
         <input type="hidden" name="_next" value="https://www.capitalai.ca/#audit">
         <input type="text" name="_gotcha" style="display:none!important" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -737,40 +737,79 @@ footer { padding:24px 0; border-top:0.5px solid var(--border); }
   /* Form — validation + honeypot + spam protection */
   const form = document.getElementById('audit-form');
   if (form) {
-    form.addEventListener('submit', (e) => {
-      const name = form.querySelector('#name').value.trim();
-      const email = form.querySelector('#email').value.trim();
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault(); // always intercept — we handle submission via fetch
+
+      const nameEl  = form.querySelector('#name');
+      const emailEl = form.querySelector('#email');
+      const name    = nameEl.value.trim();
+      const email   = emailEl.value.trim();
       const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       const honeypot = form.querySelector('input[name="_gotcha"]');
 
       // Honeypot triggered — silent reject
-      if (honeypot && honeypot.value) { e.preventDefault(); return; }
+      if (honeypot && honeypot.value) return;
 
       // Name validation
       if (!name || name.length < 2) {
-        e.preventDefault();
-        form.querySelector('#name').focus();
-        form.querySelector('#name').style.borderColor = 'rgba(192,57,43,0.8)';
+        nameEl.focus();
+        nameEl.style.borderColor = 'rgba(192,57,43,0.8)';
         return;
       }
 
       // Email validation
       if (!email || !emailRe.test(email)) {
-        e.preventDefault();
-        form.querySelector('#email').focus();
-        form.querySelector('#email').style.borderColor = 'rgba(192,57,43,0.8)';
+        emailEl.focus();
+        emailEl.style.borderColor = 'rgba(192,57,43,0.8)';
         return;
       }
 
-      // Rate limiting — prevent double submit
+      // Rate limiting — prevent double submit within 30s
       const lastSubmit = sessionStorage.getItem('cap_last_submit');
-      if (lastSubmit && Date.now() - parseInt(lastSubmit) < 30000) {
-        e.preventDefault(); return;
-      }
+      if (lastSubmit && Date.now() - parseInt(lastSubmit) < 30000) return;
       sessionStorage.setItem('cap_last_submit', Date.now());
 
       const btn = form.querySelector('.form-submit');
-      btn.textContent = 'Sending...'; btn.disabled = true;
+      const originalText = 'Claim free audit';
+      btn.textContent = 'Sending…'; btn.disabled = true;
+
+      try {
+        const data = new FormData(form);
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          btn.textContent = '✓ Audit requested!';
+          btn.style.background = '#27ae60';
+          form.reset();
+          // Reset button text after 4s so they can submit again if needed
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.background = '';
+            btn.disabled = false;
+          }, 4000);
+        } else {
+          throw new Error('Server error ' + res.status);
+        }
+      } catch (err) {
+        // ALWAYS reset the button on any error — this was the bug
+        btn.textContent = originalText;
+        btn.disabled = false;
+        sessionStorage.removeItem('cap_last_submit'); // allow retry
+        // Show a subtle error message below the button
+        let errMsg = form.querySelector('.form-error');
+        if (!errMsg) {
+          errMsg = document.createElement('p');
+          errMsg.className = 'form-error';
+          errMsg.style.cssText = 'color:rgba(192,57,43,0.9);font-size:12px;margin-top:8px;text-align:center;';
+          btn.parentNode.insertBefore(errMsg, btn.nextSibling);
+        }
+        errMsg.textContent = 'Something went wrong — please try again or email hello@capitalai.ca';
+        setTimeout(() => { if (errMsg.parentNode) errMsg.remove(); }, 6000);
+      }
     });
 
     // Clear red borders on input
