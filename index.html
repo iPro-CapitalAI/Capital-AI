@@ -1,7 +1,6 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Security-Policy" content="form-action 'self' https://formspree.io">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Capital AI – Ottawa AI-Powered SEO | Get Cited by ChatGPT &amp; Google</title>
@@ -19,9 +18,18 @@
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "name": "Capital AI",
-  "description": "Ottawa AI-powered SEO agency. Bilingual sites, gov-grade accessibility, AI citation optimization.",
+  "@id": "https://capitalai.ca/#business",
+  "name": "CapitalAI",
+  "alternateName": "CapitalAI.ca",
+  "description": "Ottawa's self-hosted AI-powered Search Engine Optimization (SEO) agency. We audit local businesses for AI search visibility — Perplexity, ChatGPT, Google — and build the content and schema to get them cited. All processing is local; no client data ever leaves your machine.",
   "url": "https://capitalai.ca",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://capitalai.ca/logo.png",
+    "width": 200,
+    "height": 60
+  },
+  "image": "https://capitalai.ca/og-image.png",
   "telephone": "+16138540929",
   "email": "hello@capitalai.ca",
   "address": {
@@ -30,17 +38,295 @@
     "addressRegion": "ON",
     "addressCountry": "CA"
   },
-  "areaServed": "Ottawa",
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 45.4215,
+    "longitude": -75.6972
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Ottawa",
+      "sameAs": "https://www.wikidata.org/wiki/Q1930"
+    },
+    {
+      "@type": "City",
+      "name": "Gatineau",
+      "sameAs": "https://www.wikidata.org/wiki/Q207069"
+    },
+    {
+      "@type": "AdministrativeArea",
+      "name": "National Capital Region"
+    },
+    {
+      "@type": "City",
+      "name": "Kanata"
+    },
+    {
+      "@type": "City",
+      "name": "Orleans"
+    },
+    {
+      "@type": "City",
+      "name": "Barrhaven"
+    },
+    {
+      "@type": "City",
+      "name": "Nepean"
+    },
+    {
+      "@type": "City",
+      "name": "Gloucester"
+    }
+  ],
+  "knowsLanguage": ["en", "fr"],
+  "foundingDate": "2025",
+  "priceRange": "$$",
+  "currenciesAccepted": "CAD",
+  "paymentAccepted": "Invoice",
+  "openingHours": "Mo-Fr 09:00-17:00",
+  "sameAs": [
+    "https://github.com/iPro-CapitalAI",
+    "https://www.linkedin.com/company/capitalai-ca"
+  ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
-    "name": "SEO & AI Visibility Services",
+    "name": "CapitalAI SEO Services",
     "itemListElement": [
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AI Citation Optimization"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Bilingual Web Builds"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "SEO + AI Hybrid"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Full Retainer"}}
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@id": "https://capitalai.ca/#service-free-audit"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@id": "https://capitalai.ca/#service-roadmap"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@id": "https://capitalai.ca/#service-dfy"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@id": "https://capitalai.ca/#service-retainer"
+        }
+      }
     ]
   }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://capitalai.ca/#khalid",
+  "name": "Khalid Mohamed",
+  "alternateName": "Khal",
+  "jobTitle": "Founder & AI SEO Strategist",
+  "description": "Ex-federal web developer turned AI Search Engine Optimization specialist. Khalid builds self-hosted, privacy-first SEO audit systems for Ottawa and National Capital Region small businesses — helping them get found by Google, Perplexity, and ChatGPT.",
+  "url": "https://capitalai.ca/about",
+  "worksFor": {
+    "@id": "https://capitalai.ca/#business"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Ottawa",
+    "addressRegion": "ON",
+    "addressCountry": "CA"
+  },
+  "knowsAbout": [
+    "Search Engine Optimization",
+    "AI search visibility",
+    "Local SEO",
+    "Schema markup",
+    "E-E-A-T content strategy",
+    "Technical SEO",
+    "AI citation optimization",
+    "Perplexity SEO",
+    "Ottawa local business marketing"
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/in/khalid-mohamed-capitalai",
+    "https://github.com/iPro-CapitalAI"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://capitalai.ca/#service-free-audit",
+  "name": "Free AI Visibility Audit",
+  "description": "A full automated SEO and AI citation audit for Ottawa small businesses. We crawl your site, score your Experience, Expertise, Authoritativeness, and Trustworthiness (E-E-A-T), identify content gaps vs local competitors, and check whether you appear in Perplexity and ChatGPT results — delivered as a PDF report at zero cost.",
+  "provider": {
+    "@id": "https://capitalai.ca/#business"
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "National Capital Region"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "CAD"
+  },
+  "serviceType": "SEO Audit",
+  "url": "https://capitalai.ca/#audit"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://capitalai.ca/#service-roadmap",
+  "name": "Audit + Roadmap",
+  "description": "Full AI visibility audit report plus a 45-minute strategy call and a prioritized fix list. You leave with a clear, actionable roadmap tailored to your Ottawa business and competitors.",
+  "provider": {
+    "@id": "https://capitalai.ca/#business"
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "National Capital Region"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "497",
+    "priceCurrency": "CAD"
+  },
+  "serviceType": "SEO Consulting",
+  "url": "https://capitalai.ca/services"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://capitalai.ca/#service-dfy",
+  "name": "Done-For-You SEO",
+  "description": "We implement the fixes for you — schema markup, content writing, AI citation targeting, and technical SEO corrections — on an ongoing monthly basis. Includes a fresh audit report every month.",
+  "provider": {
+    "@id": "https://capitalai.ca/#business"
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "National Capital Region"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "1500",
+    "priceCurrency": "CAD",
+    "eligibleDuration": {
+      "@type": "QuantitativeValue",
+      "value": 1,
+      "unitCode": "MON"
+    }
+  },
+  "serviceType": "Managed SEO",
+  "url": "https://capitalai.ca/services"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://capitalai.ca/#service-retainer",
+  "name": "Full Retainer",
+  "description": "Everything in Done-For-You plus proactive content strategy, geo-programmatic page expansion across Ottawa and Gatineau neighbourhoods, weekly freshness automation, and a monthly performance review.",
+  "provider": {
+    "@id": "https://capitalai.ca/#business"
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "National Capital Region"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "2500",
+    "priceCurrency": "CAD",
+    "eligibleDuration": {
+      "@type": "QuantitativeValue",
+      "value": 1,
+      "unitCode": "MON"
+    }
+  },
+  "serviceType": "Managed SEO",
+  "url": "https://capitalai.ca/services"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://capitalai.ca/#website",
+  "name": "CapitalAI",
+  "url": "https://capitalai.ca",
+  "description": "Ottawa's self-hosted AI SEO agency. AI visibility audits for National Capital Region small businesses.",
+  "publisher": {
+    "@id": "https://capitalai.ca/#business"
+  },
+  "inLanguage": ["en-CA", "fr-CA"],
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://capitalai.ca/?s={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is AI search visibility and why does it matter for Ottawa businesses?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI search visibility refers to whether your business appears as a cited source in AI-powered search tools like Perplexity, ChatGPT, and Google's AI Overviews. When a potential customer in Ottawa asks an AI tool for recommendations — 'best physiotherapist in Kanata' or 'Ottawa dance school for adults' — businesses that are cited appear as trusted answers. Businesses that are not cited are invisible, even if they rank on Google's traditional results. CapitalAI audits this gap and builds the content and schema signals to close it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does CapitalAI's audit work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Our automated pipeline crawls your website and two or more local competitors, scores your content against Google's Experience, Expertise, Authoritativeness, and Trustworthiness (E-E-A-T) framework, checks whether you appear in Perplexity AI results for Ottawa-specific queries, identifies content gaps vs competitors, and flags technical issues. The entire process runs locally on our machine — no client data is sent to any cloud service. Results are delivered as a PDF and HTML report within 24 hours."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which Ottawa neighbourhoods does CapitalAI serve?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We serve businesses across the full National Capital Region — Ottawa, Gatineau, Kanata, Orleans, Barrhaven, Nepean, Gloucester, Vanier, and the surrounding area. Our audits benchmark your business against local competitors specific to your neighbourhood, not just city-wide averages."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is CapitalAI different from other Ottawa SEO agencies?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Three differences. First, we audit for AI search citation visibility — Perplexity, ChatGPT, and Google AI Overviews — which most agencies do not measure. Second, our entire pipeline is self-hosted: no client data enters third-party cloud tools, which matters for privacy-sensitive businesses. Third, CapitalAI is run by an ex-federal web developer based in Ottawa, with direct knowledge of the local market and bilingual NCR audience."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does an SEO audit cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The initial AI visibility audit is free — it is our door-opener and diagnostic tool. If you want us to interpret the findings and build a fix plan, the Audit + Roadmap package is $497 CAD and includes a 45-minute strategy call. Done-For-You implementation starts at $1,500/month and the Full Retainer is $2,500/month."
+      }
+    }
+  ]
 }
 </script>
 <style>
@@ -174,15 +460,15 @@ nav { position:sticky; top:0; z-index:100; background:rgba(13,13,13,0.96); backd
 .services-cta { text-align:center; padding-top:8px; }
 .services-cta .btn-primary { font-size:15px; padding:13px 32px; }
 
-/* TESTIMONIALS */
+
+
+/* TESTIMONIALS PLACEHOLDER */
 .testimonials { padding:80px 0; border-bottom:0.5px solid var(--border); }
-.testimonials-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
-.testimonial-card { background:var(--bg2); border:0.5px solid var(--border); border-left:2.5px solid var(--red); border-radius:10px; padding:24px; display:flex; flex-direction:column; gap:16px; transition:transform 0.3s, border-color 0.3s; }
-.testimonial-card:hover { transform:translateY(-3px); border-color:rgba(192,57,43,0.4); }
-.testimonial-quote { font-size:14px; color:var(--text-2); line-height:1.7; font-style:italic; }
-.testimonial-name { font-family:var(--font-display); font-size:14px; font-weight:600; color:var(--text); letter-spacing:-0.01em; }
-.testimonial-role { font-size:12px; color:var(--text-3); margin-top:2px; }
-@media (max-width:640px) { .testimonials-grid{grid-template-columns:1fr;} }
+.testimonials-placeholder { display:flex; justify-content:center; padding:8px 0 16px; }
+.testimonials-placeholder-inner { background:var(--bg2); border:0.5px solid var(--border); border-left:2.5px solid var(--red); border-radius:12px; padding:32px 36px; max-width:520px; text-align:center; }
+.placeholder-icon { margin-bottom:16px; display:flex; justify-content:center; }
+.placeholder-headline { font-family:var(--font-display); font-size:18px; font-weight:700; color:var(--text); letter-spacing:-0.02em; margin-bottom:10px; }
+.placeholder-body { font-size:14px; color:var(--text-2); line-height:1.7; margin-bottom:24px; }
 
 /* FINAL CTA */
 .final-cta { padding:80px 0; position:relative; overflow:hidden; }
@@ -625,36 +911,17 @@ footer { padding:24px 0; border-top:0.5px solid var(--border); }
   <div class="container">
     <div class="section-header reveal">
       <p class="section-eyebrow">Results</p>
-      <h2 class="section-title">Ottawa businesses<br>getting cited by AI</h2>
+      <h2 class="section-title">Real results.<br>Coming soon.</h2>
+      <p class="section-sub">We're documenting client outcomes with permission. Every result you'll see here will be verified, named, and real — no anonymous case studies, no inflated numbers.</p>
     </div>
-    <div class="testimonials-grid">
-      <div class="testimonial-card reveal d1">
-        <div class="testimonial-quote">"Missing schema, weak entity signals — our competitors were dominating AI answers. Six weeks after Khalid's fixes we started getting cited in Perplexity and Google Overviews. Organic traffic jumped 240% and we booked 18 new patients directly from AI-driven searches."</div>
-        <div class="testimonial-author">
-          <div class="testimonial-name">Dr. Sarah Patel</div>
-          <div class="testimonial-role">Owner, Ottawa Smile Dental Studio</div>
+    <div class="testimonials-placeholder reveal d1">
+      <div class="testimonials-placeholder-inner">
+        <div class="placeholder-icon" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="1.5" stroke-linecap="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
         </div>
-      </div>
-      <div class="testimonial-card reveal d2">
-        <div class="testimonial-quote">"Our French and English sites were cannibalizing each other. Capital AI exposed 47 duplicate-content issues and rebuilt the bilingual structure. Three months later we're top 3 in both languages and appearing in French AI answers. Traffic up 180%."</div>
-        <div class="testimonial-author">
-          <div class="testimonial-name">Marc Levesque</div>
-          <div class="testimonial-role">Founder, Nordik Trail Outfitters, Gatineau</div>
-        </div>
-      </div>
-      <div class="testimonial-card reveal d3">
-        <div class="testimonial-quote">"Two Toronto firms were crushing us in AI answers. After their schema and content fixes we went from zero visibility to appearing in Perplexity and Google Overviews for 9 of our top 12 keywords. That directly led to two new government contracts."</div>
-        <div class="testimonial-author">
-          <div class="testimonial-name">Jennifer Moreau</div>
-          <div class="testimonial-role">Managing Partner, Moreau Strategy Group</div>
-        </div>
-      </div>
-      <div class="testimonial-card reveal d4">
-        <div class="testimonial-quote">"The audit showed exactly which sections Perplexity was ignoring. We fixed the gaps in four weeks — jumped from page 3 to page 1 and started getting mentioned in AI answers for our core keywords. Leads doubled in the first month."</div>
-        <div class="testimonial-author">
-          <div class="testimonial-name">Alex Rivera</div>
-          <div class="testimonial-role">CEO, FlowMetrics Analytics, Ottawa</div>
-        </div>
+        <p class="placeholder-headline">Be one of our first documented clients</p>
+        <p class="placeholder-body">We're actively working with Ottawa businesses. If you book an audit now, your result — with your permission — becomes proof that helps the next business find us.</p>
+        <a href="#audit" class="btn-primary">Claim your free audit</a>
       </div>
     </div>
   </div>
@@ -670,26 +937,21 @@ footer { padding:24px 0; border-top:0.5px solid var(--border); }
         Free 15-min audit shows exactly where AI is citing — or ignoring — your site, and what to fix first.<br>
         <em>No pitch. No credit card. Just a real audit.</em>
       </p>
-      <form class="audit-form" action="https://formspree.io/f/xaqplgpz" method="POST" id="audit-form">
-        <input type="hidden" name="_subject" value="New AI Audit Request — capitalai.ca">
-        <input type="hidden" name="_next" value="https://www.capitalai.ca/#audit">
-        <input type="text" name="_gotcha" style="display:none!important" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-        <div class="form-field">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="Your name" required aria-required="true" autocomplete="name" maxlength="100">
-        </div>
-
-        <div class="form-field">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="you@yourbusiness.com" required aria-required="true" autocomplete="email" maxlength="254">
-        </div>
-
+      <!-- n8n webhook — update URL when ngrok restarts (Phase 2: replace with permanent self-hosted endpoint) -->
+      <form class="audit-form reveal d2" action="https://driftier-glynis-believably.ngrok-free.dev/trigger-audit" method="POST" id="audit-form">
+                <input type="text" name="_gotcha" style="display:none!important" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="form-field">
           <label for="client_url">Website URL to audit</label>
           <input type="url" id="client_url" name="client_url" placeholder="https://yourbusiness.com" required aria-required="true" autocomplete="off">
         </div>
-
+        <div class="form-field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required aria-required="true" autocomplete="name" maxlength="100">
+        </div>
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@yourbusiness.com" required aria-required="true" autocomplete="email" maxlength="254">
+        </div>
         <div class="form-field">
           <div class="form-field-optional">
             <label for="phone">Phone</label>
@@ -698,7 +960,6 @@ footer { padding:24px 0; border-top:0.5px solid var(--border); }
           <input type="tel" id="phone" name="phone" placeholder="(555) 555-5555" autocomplete="tel" maxlength="20">
           <p class="phone-note">We'll call you within 24h if preferred.</p>
         </div>
-
         <button type="submit" class="btn-primary form-submit">Claim free audit</button>
         <p class="form-fine">No credit card. No pitch. Just a real 15-min audit.</p>
       </form>
@@ -734,88 +995,21 @@ footer { padding:24px 0; border-top:0.5px solid var(--border); }
     reveals.forEach(el => { if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('visible'); });
   }, 120);
 
-  /* Form — validation + honeypot + spam protection */
+  /* Form — Phase 2: replace /api/form with n8n webhook trigger */
   const form = document.getElementById('audit-form');
   if (form) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault(); // always intercept — we handle submission via fetch
-
-      const nameEl  = form.querySelector('#name');
-      const emailEl = form.querySelector('#email');
-      const name    = nameEl.value.trim();
-      const email   = emailEl.value.trim();
-      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      const honeypot = form.querySelector('input[name="_gotcha"]');
-
-      // Honeypot triggered — silent reject
-      if (honeypot && honeypot.value) return;
-
-      // Name validation
-      if (!name || name.length < 2) {
-        nameEl.focus();
-        nameEl.style.borderColor = 'rgba(192,57,43,0.8)';
-        return;
-      }
-
-      // Email validation
-      if (!email || !emailRe.test(email)) {
-        emailEl.focus();
-        emailEl.style.borderColor = 'rgba(192,57,43,0.8)';
-        return;
-      }
-
-      // Rate limiting — prevent double submit within 30s
-      const lastSubmit = sessionStorage.getItem('cap_last_submit');
-      if (lastSubmit && Date.now() - parseInt(lastSubmit) < 30000) return;
-      sessionStorage.setItem('cap_last_submit', Date.now());
-
+    form.addEventListener('submit', () => {
       const btn = form.querySelector('.form-submit');
-      const originalText = 'Claim free audit';
-      btn.textContent = 'Sending…'; btn.disabled = true;
-
-      try {
-        const data = new FormData(form);
-        const res = await fetch(form.action, {
-          method: 'POST',
-          body: data,
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (res.ok) {
-          btn.textContent = '✓ Audit requested!';
-          btn.style.background = '#27ae60';
-          form.reset();
-          // Reset button text after 4s so they can submit again if needed
-          setTimeout(() => {
-            btn.textContent = originalText;
-            btn.style.background = '';
-            btn.disabled = false;
-          }, 4000);
-        } else {
-          throw new Error('Server error ' + res.status);
-        }
-      } catch (err) {
-        // ALWAYS reset the button on any error — this was the bug
-        btn.textContent = originalText;
-        btn.disabled = false;
-        sessionStorage.removeItem('cap_last_submit'); // allow retry
-        // Show a subtle error message below the button
-        let errMsg = form.querySelector('.form-error');
-        if (!errMsg) {
-          errMsg = document.createElement('p');
-          errMsg.className = 'form-error';
-          errMsg.style.cssText = 'color:rgba(192,57,43,0.9);font-size:12px;margin-top:8px;text-align:center;';
-          btn.parentNode.insertBefore(errMsg, btn.nextSibling);
-        }
-        errMsg.textContent = 'Something went wrong — please try again or email hello@capitalai.ca';
-        setTimeout(() => { if (errMsg.parentNode) errMsg.remove(); }, 6000);
-      }
+      btn.textContent = 'Sending...'; btn.disabled = true;
     });
-
-    // Clear red borders on input
-    form.querySelectorAll('input').forEach(input => {
-      input.addEventListener('input', () => input.style.borderColor = '');
-    });
+  }
+  /* Show thank-you message if redirected back after submission */
+  if (window.location.search.includes('submitted=true')) {
+    const auditForm = document.getElementById('audit-form');
+    if (auditForm) {
+      auditForm.innerHTML = '<p style="text-align:center;color:var(--accent);font-size:15px;padding:24px 0;">Thank you — we\'ll reply within 24h. Check your inbox for a confirmation.</p>';
+    }
+    history.replaceState(null, '', window.location.pathname + '#audit');
   }
 
   /* Smooth anchors */
@@ -854,37 +1048,11 @@ footer { padding:24px 0; border-top:0.5px solid var(--border); }
 </div>
 <script>
 (function(){
-const SYSTEM = `You are Capital AI Chat — Ottawa's leading AI-first SEO strategist, representing Capital AI, founded by Khalid (Khal) Mohamed.
-
-Tone: confident, direct, authoritative, value-first. Max 4 sentences per response. No markdown, no bullet points, no headers. Plain sentences only.
-
-Primary goal: book the free 15-min AI Visibility Audit. Use loss-framing. After 2-3 exchanges, push for booking. Always end every response with a question or audit offer.
-
-When you decide to offer the Calendly booking link, end your message with the token [SHOW_CALENDLY] on its own line.
-
-THE STRATEGIC REALITY (draw from this — never recite it as a list):
-AI isn't changing SEO — it's replacing the entire customer journey. When someone asks ChatGPT or Google Overviews for a recommendation, the AI answer IS the decision. No website visit. No brand comparison. No second chance. Harvard Business Review found what used to take 15-20 website visits now happens in a single LLM response — and the brands that shaped those visits are erased entirely. 47% fewer clicks when AI summaries appear. Some publishers down 67-89% on their best pages. Optimized brands seeing 120-693% AI traffic growth (Semrush 2026). Brands ignoring this lose 25-67% of visibility by 2028.
-
-The real problem: most Ottawa businesses are invisible to AI not because their SEO is broken — but because their content is generic and unquotable. AI cites the most authoritative answer, not the most optimized page. Schema on hollow content just polishes the problem.
-
-What wins citations: original data, named frameworks, real expert bylines, consistent brand signals everywhere, clean entity coverage. For Ottawa/Gatineau: proper bilingual structure with hreflang and content parity — most bilingual sites are cannibalizing themselves.
-
-The philosophy: to be cited by AI, you have to actually BE the best answer. Technical fixes amplify real expertise — they cannot replace it.
-
-CASE STUDIES (use one when relevant, keep it to 1-2 sentences):
-Ottawa dental client: invisible on Perplexity, Capital AI fixes, cited in 6 weeks, 240% traffic and 18 new patients from AI-driven searches.
-Gatineau outdoor retailer: 47 duplicate-content issues and zero hreflang, rebuilt bilingual structure, top 3 in both languages, 180% traffic.
-Ottawa consulting firm: zero AI Overview presence, schema and content fixes, appearing for 9 of 12 top keywords, 2 new government contracts.
-Ottawa tech startup: page 3 to page 1 plus AI citations, leads doubled in one month.
-
-ABOUT CAPITAL AI:
-Ottawa's AI citation optimisation agency. Founded by Khalid (Khal) — ex-federal web developer, bilingual EN/FR. Services: AI citation optimisation, bilingual web builds, SEO and AI hybrid, full retainer. Free 15-min AI Visibility Audit — no pitch, no credit card. Phone: 613-854-0929. Email: hello@capitalai.ca. Serves Ottawa, Gatineau, NCR.
-
-LOSS FRAMING (use sparingly, max once per conversation):
-You are not losing rankings — you are being removed from the customer journey before prospects know you exist. Your competitors are being cited in AI answers right now. Every week you wait, that gap widens.
-
-STRICT RULES:
-Never fabricate metrics for their specific site. Never promise exact rankings or timelines. Never name local competitors. If off-topic, one sentence redirect then move on. Never more than 4 sentences. Ever.'`;
+// ============================================================
+// PHASE 2: Replace with self-hosted Ollama model via n8n
+// Stack: n8n + Ollama (Qwen3-72B / DeepSeek-V3) — zero external API cost
+// Current: Static placeholder until local model is deployed
+// ============================================================
 
 let open=false, msgs=[], busy=false;
 const btn=document.getElementById('cap-btn'),
@@ -916,27 +1084,15 @@ async function sendMsg(text){
   msgs.push({role:'user',content:text});
   input.value='';input.style.height='auto';send.disabled=true;busy=true;
   const tid=showTyping();
-  try{
-    const res=await fetch('/api/chat',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:400,system:SYSTEM,messages:msgs})
-    });
+  // Phase 2: Replace setTimeout with real Ollama API call via n8n
+  setTimeout(() => {
     removeTyping(tid);
-    if(!res.ok){
-      const e=await res.json();
-      if(res.status===401){addMsg('bot','API key invalid. Refresh and re-enter a valid key.');localStorage.removeItem('cap_k');}
-      else addMsg('bot','Something went wrong. Try again in a moment.');
-      return;
-    }
-    const d=await res.json();
-    const reply=d.content[0].text;
-    msgs.push({role:'assistant',content:reply});
-    const cleanReply = reply.replace('[SHOW_CALENDLY]','').trim();
-    addMsg('bot', cleanReply);
-    if(reply.includes('[SHOW_CALENDLY]')) showCalendly();
-  }catch(e){removeTyping(tid);addMsg('bot','Network error — check your connection.');}
-  finally{busy=false;send.disabled=false;input.focus();}
+    addMsg('bot', "Our AI strategist is analyzing your site. Book your free 15-min AI Visibility Audit to get the full report — we check schema, entity signals, bilingual setup, and exactly where AI is ignoring you.");
+    showCalendly();
+    busy=false;
+    send.disabled=false;
+    input.focus();
+  }, 1200);
 }
 
 function showCalendly(){
