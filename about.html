@@ -61,10 +61,6 @@
   </script>
 
   <style>
-.skip-link { position:absolute; top:-100px; left:16px; z-index:999; background:var(--red); color:#fff; font-family:var(--font-body); font-size:14px; font-weight:500; padding:10px 18px; border-radius:6px; text-decoration:none; transition:top 0.2s; }
-.skip-link:focus { top:8px; }
-
-/* SELF-HOSTED FONTS */
 /* SELF-HOSTED FONTS */
 @font-face { font-display:swap; font-family:'Syne'; font-style:normal; font-weight:700; src:url('/fonts/syne-v24-latin-700.woff2') format('woff2'); }
 @font-face { font-display:swap; font-family:'Syne'; font-style:normal; font-weight:800; src:url('/fonts/syne-v24-latin-800.woff2') format('woff2'); }
@@ -72,6 +68,19 @@
 @font-face { font-display:swap; font-family:'DM Sans'; font-style:normal; font-weight:400; src:url('/fonts/dm-sans-v17-latin-regular.woff2') format('woff2'); }
 @font-face { font-display:swap; font-family:'DM Sans'; font-style:normal; font-weight:500; src:url('/fonts/dm-sans-v17-latin-500.woff2') format('woff2'); }
 
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --red: #C0392B; --red-dark: #96281B;
+  --bg: #0d0d0d; --bg2: #141414; --bg3: #1a1a1a;
+  --border: rgba(255,255,255,0.07); --border-strong: rgba(255,255,255,0.13);
+  --text: #f0ece4; --text-2: #a09a90; --text-3: #827e7a; --accent: #e8d5b0;
+  --font-display: 'Syne', 'Arial Black', system-ui, sans-serif; --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+/* 
     :root {
       --red: #C0392B;
       --red-dark: #96281B;
@@ -594,22 +603,21 @@
 
   <!-- NAV -->
   <nav>
-  <div class="container">
-    <div class="nav-inner">
-      <a href="/" class="nav-logo">Capital<span>AI</span></a>
-      <ul class="nav-links">
-        <li><a href="/#services">Services</a></li>
-        <li><a href="/about" class="active">About</a></li>
-        <li><a href="https://capitalai.ca/blog">Blog</a></li>
-        <li><a href="/#audit">Contact</a></li>
-      </ul>
-      <div class="nav-right">
-        <a href="/fr/" class="lang-toggle" hreflang="fr">EN / FR</a>
-        <a href="/#audit" class="btn-primary">Claim free audit</a>
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">Capital<span>AI</span></a>
+        <ul class="nav-links">
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="index.html#audit">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+          <a href="fr/index.html" class="lang-toggle" hreflang="fr">EN / FR</a>
+          <a href="index.html#audit" class="btn-primary">Claim free audit</a>
+        </div>
       </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
   <!-- BREADCRUMB (schema-eligible) -->
   <div class="container">
