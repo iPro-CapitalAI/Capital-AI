@@ -14,7 +14,6 @@
 <link rel="alternate" hreflang="fr" href="https://www.capitalai.ca/fr/">
 <link rel="canonical" href="https://www.capitalai.ca/">
 <!-- Self-hosted fonts — no Google dependency, no render blocking, no privacy leak -->
-<!-- 1. LocalBusiness — tells Google who you are and where you operate -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,14 +30,12 @@
     "height": 60
   },
   "image": "https://capitalai.ca/og-image.png",
-  "telephone": "",
+  "telephone": "+16138540929",
   "email": "hello@capitalai.ca",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Ottawa, ON",
     "addressLocality": "Ottawa",
     "addressRegion": "ON",
-    "postalCode": "K1A",
     "addressCountry": "CA"
   },
   "geo": {
@@ -124,8 +121,6 @@
   }
 }
 </script>
- 
-<!-- 2. Person — Khalid's credentials as the expert behind the business -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -162,8 +157,6 @@
   ]
 }
 </script>
- 
-<!-- 3. Service × 4 — one node per tier, cross-referenced from LocalBusiness above -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -187,7 +180,6 @@
   "url": "https://capitalai.ca/#audit"
 }
 </script>
- 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -211,7 +203,6 @@
   "url": "https://capitalai.ca/services"
 }
 </script>
- 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -240,7 +231,6 @@
   "url": "https://capitalai.ca/services"
 }
 </script>
- 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -269,8 +259,6 @@
   "url": "https://capitalai.ca/services"
 }
 </script>
- 
-<!-- 4. WebSite — enables Sitelinks Search Box and internal entity coherence -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -293,9 +281,6 @@
   }
 }
 </script>
- 
-<!-- 5. FAQ — answer capsule for AI citation targeting (Perplexity, ChatGPT, Google SGE) -->
-<!-- Add/remove questions as your actual FAQ section grows -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -584,11 +569,12 @@ footer { padding:24px 0; border-top:0.5px solid var(--border); }
       <a href="/" class="nav-logo">Capital<span>AI</span></a>
       <ul class="nav-links">
         <li><a href="#services">Services</a></li>
+        <li><a href="/about">About</a></li>
         <li><a href="https://capitalai.ca/blog">Blog</a></li>
         <li><a href="#audit">Contact</a></li>
       </ul>
       <div class="nav-right">
-        <a href="https://capitalai.ca/fr/" class="lang-toggle" hreflang="fr">EN / FR</a>
+        <a href="/fr/" class="lang-toggle" hreflang="fr">EN / FR</a>
         <a href="#audit" class="btn-primary">Claim free audit</a>
       </div>
     </div>
