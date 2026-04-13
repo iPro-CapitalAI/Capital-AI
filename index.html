@@ -418,10 +418,10 @@ nav { position:sticky; top:0; z-index:100; background:rgba(13,13,13,0.96); backd
 .hero-skyline { position:absolute; bottom:0; left:0; right:0; height:220px; pointer-events:none; animation:skyRise 1.8s 0.4s ease both; z-index:1; }
 .hero-skyline svg { width:100%; height:100%; }
 
-.hero-inner { position:relative; text-align:center; max-width:800px; margin:0 auto; z-index:2; text-shadow: 0 2px 20px rgba(0,0,0,0.8), 0 0 40px rgba(13,13,13,0.9); }
+.hero-inner { position:relative; text-align:center; max-width:800px; width:100%; margin:0 auto; z-index:2; overflow:hidden; text-shadow: 0 2px 20px rgba(0,0,0,0.8), 0 0 40px rgba(13,13,13,0.9); }
 .hero-eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:11px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); background:rgba(192,57,43,0.22); border:0.5px solid rgba(192,57,43,0.5); border-radius:4px; padding:5px 12px; margin-bottom:28px; animation:fadeUp 0.6s 0.6s both; }
 .hero-eyebrow::before { content:''; width:5px; height:5px; background:var(--red); border-radius:50%; animation:pulse 2s infinite; }
-.hero-headline { font-family:var(--font-display); font-size:clamp(36px,6vw,68px); font-weight:800; line-height:1.03; letter-spacing:-0.03em; color:var(--text); margin-bottom:18px; }
+.hero-headline { font-family:var(--font-display); font-size:clamp(28px,6vw,68px); font-weight:800; line-height:1.05; letter-spacing:-0.03em; color:var(--text); margin-bottom:18px; overflow-wrap:break-word; word-break:break-word; max-width:100%; }
 .hero-headline em { font-style:normal; color:var(--red); }
 .hero-subline { font-family:var(--font-display); font-size:clamp(16px,2.4vw,22px); font-weight:500; line-height:1.35; letter-spacing:-0.01em; color:var(--accent); margin-bottom:22px; opacity:0.88; animation:fadeUp 0.7s 0.9s both; }
 .hero-sub { font-size:15px; font-weight:300; color:var(--text-2); line-height:1.7; margin-bottom:36px; animation:fadeUp 0.7s 1.05s both; }
@@ -585,11 +585,10 @@ footer { padding:24px 0; border-top:0.5px solid var(--border); }
       <ul class="nav-links">
         <li><a href="#services">Services</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="https://capitalai.ca/blog">Blog</a></li>
         <li><a href="#audit">Contact</a></li>
       </ul>
       <div class="nav-right">
-        <a href="https://capitalai.ca/fr/index.html" class="lang-toggle" hreflang="fr">EN / FR</a>
+        <a href="https://capitalai.ca/fr/" class="lang-toggle" hreflang="fr">EN / FR</a>
         <a href="#audit" class="btn-primary">Claim free audit</a>
       </div>
     </div>
@@ -994,7 +993,7 @@ footer { padding:24px 0; border-top:0.5px solid var(--border); }
   <div class="container">
     <div class="footer-inner">
       <a href="/" class="footer-logo">Capital<span>AI</span>.ca</a>
-      <p class="footer-fine">&copy; 2026 Capital AI. Ottawa, ON &nbsp;&middot;&nbsp; <a href="https://capitalai.ca/fr/index.html" style="color:inherit;text-decoration:none;" hreflang="fr">Fran&ccedil;ais</a></p>
+      <p class="footer-fine">&copy; 2026 Capital AI. Ottawa, ON &nbsp;&middot;&nbsp; <a href="https://capitalai.ca/fr/" style="color:inherit;text-decoration:none;" hreflang="fr">Fran&ccedil;ais</a></p>
     </div>
   </div>
 
@@ -1116,7 +1115,7 @@ function showCalendly(){
   wrap.className='cap-msg bot';
   wrap.innerHTML='<div class="cap-bbl" style="background:rgba(192,57,43,0.12);border:0.5px solid rgba(192,57,43,0.4);text-align:center;padding:16px 18px;">'+
     '<div style="font-size:13px;color:#e8d5b0;margin-bottom:12px;">Book your free 15-min AI Visibility Audit</div>'+
-    '<a href="https://calendly.com/hello-capitalai/30min" target="_blank" rel="noopener" '+
+    '<a href="https://calendly.com/capitalai" target="_blank" rel="noopener" '+
     'style="display:inline-block;background:#C0392B;color:#fff;text-decoration:none;padding:10px 22px;border-radius:8px;font-size:13px;font-weight:500;">'+
     'Book Audit →</a>'+
     '<div style="font-size:11px;color:#827e7a;margin-top:8px;">No pitch. No credit card.</div>'+
