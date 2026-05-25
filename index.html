@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.capitalai.ca/">
 <link rel="alternate" hreflang="en" href="https://www.capitalai.ca/">
-
+<link rel="alternate" hreflang="fr" href="https://www.capitalai.ca/fr/">
 <link rel="canonical" href="https://www.capitalai.ca/">
 <!-- Self-hosted fonts — no Google dependency, no render blocking, no privacy leak -->
 <!-- 1. LocalBusiness — tells Google who you are and where you operate -->
@@ -346,12 +346,11 @@
 </script>
 <style>
 /* SELF-HOSTED FONTS */
-@font-face { font-display:swap; font-family:'Inter'; font-style:normal; font-weight:300; src:url('/fonts/inter-v18-latin-300.woff2') format('woff2'); }
-@font-face { font-display:swap; font-family:'Inter'; font-style:normal; font-weight:400; src:url('/fonts/inter-v18-latin-regular.woff2') format('woff2'); }
-@font-face { font-display:swap; font-family:'Inter'; font-style:normal; font-weight:500; src:url('/fonts/inter-v18-latin-500.woff2') format('woff2'); }
-@font-face { font-display:swap; font-family:'Inter'; font-style:normal; font-weight:600; src:url('/fonts/inter-v18-latin-600.woff2') format('woff2'); }
-@font-face { font-display:swap; font-family:'Inter'; font-style:normal; font-weight:700; src:url('/fonts/inter-v18-latin-700.woff2') format('woff2'); }
-@font-face { font-display:swap; font-family:'Inter'; font-style:normal; font-weight:800; src:url('/fonts/inter-v18-latin-800.woff2') format('woff2'); }
+@font-face { font-display:swap; font-family:'Syne'; font-style:normal; font-weight:700; src:url('/fonts/syne-v24-latin-700.woff2') format('woff2'); }
+@font-face { font-display:swap; font-family:'Syne'; font-style:normal; font-weight:800; src:url('/fonts/syne-v24-latin-800.woff2') format('woff2'); }
+@font-face { font-display:swap; font-family:'DM Sans'; font-style:normal; font-weight:300; src:url('/fonts/dm-sans-v17-latin-300.woff2') format('woff2'); }
+@font-face { font-display:swap; font-family:'DM Sans'; font-style:normal; font-weight:400; src:url('/fonts/dm-sans-v17-latin-regular.woff2') format('woff2'); }
+@font-face { font-display:swap; font-family:'DM Sans'; font-style:normal; font-weight:500; src:url('/fonts/dm-sans-v17-latin-500.woff2') format('woff2'); }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -359,7 +358,7 @@
   --bg: #0d0d0d; --bg2: #141414; --bg3: #1a1a1a;
   --border: rgba(255,255,255,0.07); --border-strong: rgba(255,255,255,0.13);
   --text: #f0ece4; --text-2: #a09a90; --text-3: #827e7a; --accent: #e8d5b0;
-  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Syne', 'Arial Black', system-ui, sans-serif; --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 html { scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
@@ -405,7 +404,8 @@ nav { position:sticky; top:0; z-index:100; background:rgba(13,13,13,0.96); backd
 .nav-links a:hover { color:var(--text); }
 .nav-links a:hover::after { transform:scaleX(1); }
 .nav-right { display:flex; align-items:center; gap:12px; animation:fadeIn 0.6s 0.45s both; }
-
+.lang-toggle { font-size:11px; font-weight:500; color:var(--text-3); border:0.5px solid var(--border-strong); border-radius:20px; padding:4px 10px; text-decoration:none; letter-spacing:0.05em; transition:color 0.2s; }
+.lang-toggle:hover { color:var(--text-2); }
 .btn-primary { display:inline-flex; align-items:center; gap:6px; background:var(--red); color:#fff; font-family:var(--font-body); font-size:13px; font-weight:500; padding:9px 16px; border-radius:6px; text-decoration:none; border:none; cursor:pointer; transition:background 0.2s, transform 0.15s, box-shadow 0.2s; white-space:nowrap; }
 .btn-primary:hover { background:var(--red-dark); transform:translateY(-2px); box-shadow:0 6px 20px rgba(192,57,43,0.38); }
 .btn-primary:active { transform:translateY(0); box-shadow:none; }
@@ -588,6 +588,7 @@ footer { padding:24px 0; border-top:0.5px solid var(--border); }
         <li><a href="#audit">Contact</a></li>
       </ul>
       <div class="nav-right">
+        <a href="https://capitalai.ca/fr/" class="lang-toggle" hreflang="fr">EN / FR</a>
         <a href="#audit" class="btn-primary">Claim free audit</a>
       </div>
     </div>
@@ -836,7 +837,7 @@ footer { padding:24px 0; border-top:0.5px solid var(--border); }
           <rect x="4" width="8" height="11" fill="white"/>
           <path d="M8 2.5L8.7 4.6H11L9.15 5.9L9.85 8L8 6.7L6.15 8L6.85 5.9L5 4.6H7.3L8 2.5Z" fill="#D52B1E"/>
         </svg>
-        <span>Ottawa + NCR</span>
+        <span>Ottawa + NCR &nbsp;·&nbsp; en français aussi</span>
       </div>
     </div>
   </div>
@@ -952,7 +953,7 @@ footer { padding:24px 0; border-top:0.5px solid var(--border); }
         <em>No pitch. No credit card. Just a real audit.</em>
       </p>
       <!-- n8n webhook — update URL when ngrok restarts (Phase 2: replace with permanent self-hosted endpoint) -->
-      <form class="audit-form reveal d2" action="https://driftier-glynis-believably.ngrok-free.dev/trigger-audit" method="POST" id="audit-form">
+      <form class="audit-form reveal d2" action="/api/form" method="POST" id="audit-form">
                 <input type="text" name="_gotcha" style="display:none!important" tabindex="-1" autocomplete="off" aria-hidden="true">
         <div class="form-field">
           <label for="client_url">Website URL to audit</label>
@@ -992,7 +993,7 @@ footer { padding:24px 0; border-top:0.5px solid var(--border); }
   <div class="container">
     <div class="footer-inner">
       <a href="/" class="footer-logo">Capital<span>AI</span>.ca</a>
-      <p class="footer-fine">&copy; 2026 Capital AI. Ottawa, ON</p>
+      <p class="footer-fine">&copy; 2026 Capital AI. Ottawa, ON &nbsp;&middot;&nbsp; <a href="https://capitalai.ca/fr/" style="color:inherit;text-decoration:none;" hreflang="fr">Fran&ccedil;ais</a></p>
     </div>
   </div>
 
@@ -1009,21 +1010,40 @@ footer { padding:24px 0; border-top:0.5px solid var(--border); }
     reveals.forEach(el => { if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('visible'); });
   }, 120);
 
-  /* Form — Phase 2: replace /api/form with n8n webhook trigger */
+  /* Form — posts to Vercel Edge Function /api/form
+     Phase 2: swap endpoint to n8n webhook when self-hosted stack is live */
   const form = document.getElementById('audit-form');
   if (form) {
-    form.addEventListener('submit', () => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
       const btn = form.querySelector('.form-submit');
-      btn.textContent = 'Sending...'; btn.disabled = true;
+      const originalText = btn.textContent;
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      try {
+        const data = new FormData(form);
+        const res = await fetch('/api/form', {
+          method: 'POST',
+          body: new URLSearchParams(data),
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        });
+
+        if (res.ok || res.redirected) {
+          form.innerHTML = '<p style="text-align:center;color:var(--accent);font-size:15px;padding:24px 0;line-height:1.7;">✅ Thanks — we\'ll reply within 24h.<br><span style=\"font-size:13px;color:var(--text-3)\">Check hello@capitalai.ca for a confirmation.</span></p>';
+        } else {
+          throw new Error('Server error ' + res.status);
+        }
+      } catch (err) {
+        btn.textContent = originalText;
+        btn.disabled = false;
+        const errMsg = form.querySelector('.form-error') || document.createElement('p');
+        errMsg.className = 'form-error';
+        errMsg.style.cssText = 'color:#e74c3c;font-size:13px;text-align:center;margin-top:10px;';
+        errMsg.textContent = 'Something went wrong — please email hello@capitalai.ca directly.';
+        if (!form.querySelector('.form-error')) form.appendChild(errMsg);
+      }
     });
-  }
-  /* Show thank-you message if redirected back after submission */
-  if (window.location.search.includes('submitted=true')) {
-    const auditForm = document.getElementById('audit-form');
-    if (auditForm) {
-      auditForm.innerHTML = '<p style="text-align:center;color:var(--accent);font-size:15px;padding:24px 0;">Thank you — we\'ll reply within 24h. Check your inbox for a confirmation.</p>';
-    }
-    history.replaceState(null, '', window.location.pathname + '#audit');
   }
 
   /* Smooth anchors */
