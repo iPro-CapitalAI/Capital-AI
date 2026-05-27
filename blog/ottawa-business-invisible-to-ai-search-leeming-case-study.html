@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Local Ottawa Dance Studio Just Discovered They're Invisible to AI Search | CapitalAI.ca</title>
+<meta name="description" content="A real AI Visibility Audit of an Ottawa dance studio shows the gap most local businesses don't know exists. Real data, real fixes, real consequences.">
+<meta name="author" content="CapitalAI.ca">
+
+<!-- Open Graph -->
+<meta property="og:title" content="A Local Ottawa Dance Studio Just Discovered They're Invisible to AI Search">
+<meta property="og:description" content="A real AI Visibility Audit reveals what most Ottawa businesses don't know about AI search.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.capitalai.ca/blog/leeming-ai-visibility-audit">
+<meta property="og:site_name" content="CapitalAI.ca">
+
+<!-- JSON-LD Article Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "A Local Ottawa Dance Studio Just Discovered They're Invisible to AI Search. Here's What That Means for Your Business.",
+  "description": "A real AI Visibility Audit of an Ottawa dance studio shows the gap most local businesses don't know exists. Real data, real fixes, real consequences.",
+  "author": {
+    "@type": "Organization",
+    "name": "CapitalAI.ca",
+    "url": "https://www.capitalai.ca"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "CapitalAI.ca",
+    "url": "https://www.capitalai.ca"
+  },
+  "datePublished": "2026-05-26",
+  "dateModified": "2026-05-26",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.capitalai.ca/blog/leeming-ai-visibility-audit"
+  },
+  "about": [
+    {"@type": "Thing", "name": "AI Search Optimization"},
+    {"@type": "Thing", "name": "E-E-A-T"},
+    {"@type": "Thing", "name": "Local SEO"},
+    {"@type": "Thing", "name": "Schema Markup"}
+  ],
+  "keywords": "AI search, AI visibility, E-E-A-T, Ottawa SEO, schema markup, AI citation, local business SEO",
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Generative AI in Search: Let Google do the searching for you",
+      "author": "Google",
+      "datePublished": "2024-05-14",
+      "url": "https://blog.google/products-and-platforms/products/search/generative-ai-google-search-may-2024/"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Semrush AI Overviews Study",
+      "author": "Semrush",
+      "datePublished": "2025",
+      "url": "https://www.semrush.com/blog/semrush-ai-overviews-study/"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Google users are less likely to click on links when an AI summary appears in the results",
+      "author": "Pew Research Center",
+      "datePublished": "2025-07-22",
+      "url": "https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/"
+    }
+  ]
+}
+</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Newsreader:opsz,wght@6..72,300..700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #faf6ef;
+  --bg-warm: #f3ede2;
+  --ink: #1a1612;
+  --ink-soft: #3d362e;
+  --muted: #6b6258;
+  --rule: #d9d1c3;
+  --accent: #a8311e;
+  --accent-deep: #7a2415;
+  --gold: #b8893f;
+  --paper: #ffffff;
+  --dark: #1a1612;
+  --dark-soft: #28221b;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 19px;
+  line-height: 1.65;
+  font-feature-settings: 'kern', 'liga';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Top bar */
+.topbar {
+  border-bottom: 1px solid var(--rule);
+  padding: 1.25rem 0;
+  background: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+  background-color: rgba(250, 246, 239, 0.92);
+}
+
+.topbar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.topbar-brand {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.topbar-brand .dot {
+  color: var(--accent);
+}
+
+.topbar-meta {
+  display: flex;
+  gap: 2rem;
+}
+
+@media (max-width: 640px) {
+  .topbar-meta { display: none; }
+}
+
+/* Article container */
+.article {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4rem 2rem 6rem;
+}
+
+/* Category tag */
+.category {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.category::before {
+  content: '';
+  width: 1.5rem;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* Headline */
+h1 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(2.25rem, 5.5vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin-bottom: 2rem;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+  color: var(--ink);
+}
+
+h1 em {
+  font-style: italic;
+  font-variation-settings: 'opsz' 144, 'SOFT' 60;
+  color: var(--accent-deep);
+}
+
+/* Dek / standfirst */
+.dek {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  font-weight: 300;
+  font-style: italic;
+  border-left: 2px solid var(--accent);
+  padding-left: 1.5rem;
+  margin-bottom: 3rem;
+  max-width: 600px;
+}
+
+/* Byline */
+.byline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 1.25rem 0;
+  margin-bottom: 3.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.byline strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* Section headings */
+h2 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 500;
+  font-size: 1.85rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 3.5rem 0 1.5rem;
+  color: var(--ink);
+  font-variation-settings: 'opsz' 60, 'SOFT' 30;
+}
+
+h2::before {
+  content: '§';
+  color: var(--accent);
+  margin-right: 0.6rem;
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* Body paragraphs */
+p {
+  margin-bottom: 1.4rem;
+  color: var(--ink-soft);
+}
+
+.article > p:first-of-type::first-letter,
+.lead::first-letter {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 4.5rem;
+  line-height: 0.85;
+  float: left;
+  padding: 0.3rem 0.6rem 0 0;
+  color: var(--accent);
+  font-weight: 500;
+  font-variation-settings: 'opsz' 144, 'SOFT' 50;
+}
+
+/* Strong text */
+strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Links */
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent-deep);
+}
+
+/* Pull quote */
+.pullquote {
+  margin: 3rem -2rem;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+}
+
+.pullquote p {
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 1.75rem;
+  line-height: 1.3;
+  color: var(--ink);
+  margin: 0;
+  font-weight: 400;
+  font-variation-settings: 'opsz' 144, 'SOFT' 40;
+}
+
+.pullquote::before {
+  content: '"';
+  position: absolute;
+  top: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg);
+  padding: 0 1rem;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 2rem;
+  color: var(--accent);
+  line-height: 1;
+}
+
+/* Stat callout */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  margin: 2.5rem 0;
+  border: 1px solid var(--rule);
+}
+
+.stat {
+  background: var(--bg-warm);
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+}
+
+.stat-number {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 2.5rem;
+  line-height: 1;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-variation-settings: 'opsz' 144, 'SOFT' 30;
+}
+
+.stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* Figure / images */
+figure {
+  margin: 3rem -3rem;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+}
+
+@media (max-width: 800px) {
+  figure { margin: 3rem -1rem; }
+}
+
+figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--rule);
+  background: var(--bg-warm);
+}
+
+figcaption .fig-num {
+  color: var(--accent);
+  font-weight: 700;
+  margin-right: 0.75rem;
+}
+
+/* Lists */
+.findings {
+  margin: 2rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.findings li {
+  position: relative;
+  padding: 1.25rem 0 1.25rem 3rem;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink-soft);
+}
+
+.findings li:last-child {
+  border-bottom: none;
+}
+
+.findings li::before {
+  content: counter(finding, decimal-leading-zero);
+  counter-increment: finding;
+  position: absolute;
+  left: 0;
+  top: 1.25rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.findings {
+  counter-reset: finding;
+}
+
+.findings strong {
+  display: block;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.1rem;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+}
+
+/* CTA Section */
+.cta-section {
+  background: var(--dark);
+  color: #f3ede2;
+  margin: 5rem -2rem 0;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--gold) 100%);
+}
+
+.cta-inner {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cta-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+}
+
+.cta-section h2 {
+  color: #faf6ef;
+  font-size: 2.25rem;
+  margin: 0 0 1.25rem;
+}
+
+.cta-section h2::before {
+  display: none;
+}
+
+.cta-section p {
+  color: #c9c0b1;
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
+}
+
+.cta-button {
+  display: inline-block;
+  background: var(--accent);
+  color: #faf6ef;
+  text-decoration: none;
+  padding: 1.1rem 2.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border: 1px solid var(--accent);
+  transition: all 0.25s ease;
+}
+
+.cta-button:hover {
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.cta-meta {
+  margin-top: 1.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8a8278;
+}
+
+/* Sources */
+.sources {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+}
+
+.sources h3 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.sources ol {
+  list-style: none;
+  padding: 0;
+  counter-reset: source;
+}
+
+.sources li {
+  position: relative;
+  padding: 0.75rem 0 0.75rem 2.5rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--muted);
+  border-bottom: 1px dotted var(--rule);
+  counter-increment: source;
+}
+
+.sources li::before {
+  content: counter(source, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.85rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.sources li:last-child {
+  border-bottom: none;
+}
+
+.sources a {
+  word-break: break-word;
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid var(--rule);
+  padding: 2.5rem 0;
+  margin-top: 0;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+footer .dot {
+  color: var(--accent);
+  margin: 0 0.5rem;
+}
+
+/* Reveal animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.article > * {
+  animation: fadeUp 0.7s ease-out backwards;
+}
+
+.article > .category { animation-delay: 0.05s; }
+.article > h1 { animation-delay: 0.15s; }
+.article > .dek { animation-delay: 0.25s; }
+.article > .byline { animation-delay: 0.35s; }
+
+@media (max-width: 640px) {
+  body { font-size: 18px; }
+  .article { padding: 2.5rem 1.25rem 4rem; }
+  .pullquote { margin: 2.5rem -1.25rem; padding: 2rem 1.25rem; }
+  .pullquote p { font-size: 1.4rem; }
+  .cta-section { margin: 4rem -1.25rem 0; padding: 3rem 1.25rem; }
+  .cta-section h2 { font-size: 1.75rem; }
+  .article > p:first-of-type::first-letter { font-size: 3.5rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-brand">CapitalAI<span class="dot">.</span>ca</div>
+    <div class="topbar-meta">
+      <span>The Visibility Files</span>
+      <span>Ottawa · 2026</span>
+    </div>
+  </div>
+</header>
+
+<article class="article">
+
+  <div class="category">Case Study · No. 01</div>
+
+  <h1>A Local Ottawa Dance Studio Just Discovered They're <em>Invisible</em> to AI Search.</h1>
+
+  <p class="dek">Here's what that means for your business — and why most Ottawa companies are in exactly the same position right now.</p>
+
+  <div class="byline">
+    <span><strong>By CapitalAI</strong></span>
+    <span>May 26, 2026 · 8 min read</span>
+  </div>
+
+  <p>Leeming Danceworks is an established dance studio in Ottawa's east end. They teach ballet, jazz, hip hop, acrobatics, and a dozen other styles. They've built a real community over the years. Families know them. Their teachers care. Their students come back.</p>
+
+  <p>Last week, we ran their website through our AI Visibility Audit.</p>
+
+  <p>The results stopped us cold.</p>
+
+  <figure>
+    <img src="/assets/audits/Exec-Summary-Audit.jpg" alt="CapitalAI AI Visibility Audit Executive Summary for Leeming Danceworks: 34 pages audited, E-E-A-T score 2.9 out of 10 needs attention, 35 technical issues, not cited by AI in 0 of 3 queries, 58 content gaps versus competitors. The site is currently invisible to AI search and below Google's trust threshold.">
+    <figcaption><span class="fig-num">Fig. 01</span>Executive Summary — CapitalAI Audit, April 2026</figcaption>
+  </figure>
+
+  <h2>What We Found</h2>
+
+  <p>Google measures business credibility using something called <strong>E-E-A-T</strong>: Experience, Expertise, Authoritativeness, and Trustworthiness. It's how Google's AI decides who to cite when someone asks a question.</p>
+
+  <p>Leeming Danceworks scored <strong>2.9 out of 10</strong>.</p>
+
+  <p>Below 4 means a business is effectively invisible to AI search. No matter how good the service is. No matter how loyal the customers are. When someone in Ottawa asks ChatGPT, Perplexity, or Google's AI "where should I send my kid for dance classes," Leeming doesn't come up.</p>
+
+  <p>We tested three of those exact queries. Leeming was cited <strong>zero times out of three</strong>.</p>
+
+  <p>Meanwhile, their two main competitors — both Ottawa-area dance studios — are showing up. Customers are finding them instead.</p>
+
+  <div class="pullquote">
+    <p>The website that worked perfectly fine in 2022 doesn't work the same way today.</p>
+  </div>
+
+  <h2>Why This Matters (And Why It's Not Their Fault)</h2>
+
+  <p>Sharon and her team did everything a dance studio is supposed to do. They built a website. They listed their programs. They wrote content about their classes. They invested in their business.</p>
+
+  <p>But the rules changed in 2024 and nobody told them.</p>
+
+  <p>Google launched AI Overviews in May 2024 (Google, 2024). Within a year, AI-generated answers were appearing in over 13% of U.S. searches, according to a Semrush study analyzing more than 10 million keywords (Semrush, 2025). By late 2025, that number reached roughly 50% of queries (DemandSage, 2025).</p>
+
+  <div class="stat-row">
+    <div class="stat">
+      <div class="stat-number">6.5%</div>
+      <div class="stat-label">AI Overviews<br>Jan 2025</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">13%</div>
+      <div class="stat-label">AI Overviews<br>March 2025</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">~50%</div>
+      <div class="stat-label">AI Overviews<br>Late 2025</div>
+    </div>
+  </div>
+
+  <p>The traffic that used to come from page-one rankings is now intercepted by AI answers above the search results. If a business isn't in that AI answer, they're invisible to anyone who doesn't scroll.</p>
+
+  <p>Leeming isn't alone in this. Most local businesses in Ottawa are in exactly the same position. They just don't know it yet.</p>
+
+  <h2>The Specific Problems We Found</h2>
+
+  <p>Our crawler audited 34 pages on the Leeming website. Here's what came back:</p>
+
+  <ol class="findings">
+    <li>
+      <strong>34 pages with no schema markup</strong>
+      Schema is the structured data that tells AI exactly what your business is, where you're located, and what you offer. Without it, AI tools skip the page entirely — even when it's the best answer to someone's question.
+    </li>
+    <li>
+      <strong>1 page with a missing or broken H1 heading</strong>
+      The H1 is the first signal search engines use to understand what a page is about. Without it, that page is fighting an uphill battle to rank for anything.
+    </li>
+    <li>
+      <strong>11 pages missing instructor bios</strong>
+      When a parent searches "best ballet teachers in Ottawa," Google's AI looks for credentialed humans behind the business. No bios means no signal of expertise.
+    </li>
+    <li>
+      <strong>104 images without alt text</strong>
+      This hurts accessibility and means every image is invisible to Google's image search.
+    </li>
+    <li>
+      <strong>58 content gaps versus competitors</strong>
+      Topics their competitors cover that Leeming doesn't: fees, schedules, adult classes, summer camp details, French-language content. Every gap is a customer searching for that information and finding a competitor instead.
+    </li>
+  </ol>
+
+  <figure>
+    <img src="/assets/audits/Gap-Summary-Audit.jpg" alt="Content Gap Summary from the CapitalAI audit: 58 topic gaps identified across 42 competitor pages analyzed. High priority missing topics include Fees, News, Prix, Horaire, and Creativite. Medium priority missing topics include Cours Prives, Lower School, Contact ODCS, summer camps, and Participation. Low priority missing topics include Jazz Broadway, Pourquoi EDL, Adult Classes, and Cours Ouverts.">
+    <figcaption><span class="fig-num">Fig. 02</span>Content Gap Analysis — Topics competitors own that Leeming doesn't</figcaption>
+  </figure>
+
+  <h2>What Fixing This Looks Like</h2>
+
+  <p>The good news: most of this is fixable in a few weeks.</p>
+
+  <p>Schema markup on all 34 pages takes about 2 to 4 hours of developer time. Fixing the H1 tag takes 15 minutes. Adding instructor bios takes 1 to 2 hours of writing. Closing the content gaps takes longer — several months of consistent publishing — but the technical foundation can be in place within a week.</p>
+
+  <p>Once schema is implemented, AI tools typically start citing pages within 4 to 8 weeks.</p>
+
+  <figure>
+    <img src="/assets/audits/Action-Plan-Audit.jpg" alt="Prioritized Action Plan from the CapitalAI audit: Tasks ordered by ROI impact. Week 1 Fix the Foundation includes meta descriptions complete, fix H1 tags on 1 page, internal link audit to connect strong to weak pages. Month 2-3 Scale and Dominate includes creating 5 pillar pages from opportunities, closing 58 content gaps with targeted articles, geo-programmatic expansion in Ottawa and NCR, weekly freshness automation, and AI citation targeting restructuring as answer capsules for Perplexity, ChatGPT, and Claude citations.">
+    <figcaption><span class="fig-num">Fig. 03</span>Prioritized Action Plan — Tasks ordered by ROI impact</figcaption>
+  </figure>
+
+  <p>That's the window. A few weeks of focused work and a business that's invisible today becomes a business that AI recommends.</p>
+
+  <h2>Why We're Telling You This</h2>
+
+  <p>We're publishing this audit with Sharon's blessing because it illustrates something every local business owner in Ottawa needs to understand:</p>
+
+  <div class="pullquote">
+    <p>Being good at what you do is no longer enough.</p>
+  </div>
+
+  <p>Your website has to communicate what you do in a way AI can understand. Otherwise, the customers searching for exactly what you offer will find someone else.</p>
+
+  <p>This isn't a Leeming Danceworks problem. We've run this same audit on dozens of local businesses — consultants, contractors, clinics, agencies, retailers. The pattern is consistent. Most score below 4 out of 10. Most aren't getting cited by AI. Most don't know it.</p>
+
+  <p>The businesses that figure this out first will own their markets for the next decade.</p>
+
+  <h2>What This Means for You</h2>
+
+  <p>If you run a local Ottawa business, you're probably in the same position Leeming was in last week. You have no idea where you stand with AI search because nobody has measured it for you.</p>
+
+  <p>That's what our AI Visibility Audit does. We crawl your site, score it on E-E-A-T, check whether AI tools cite you for queries customers actually search, and identify the specific fixes that move the needle.</p>
+
+  <p>You get the same report Sharon got — pages of analysis, specific recommendations, and a prioritized action plan your developer can implement immediately.</p>
+
+  <div class="sources">
+    <h3>Sources</h3>
+    <ol>
+      <li>Google. (2024, May 14). <em>Generative AI in Search: Let Google do the searching for you.</em> Google Blog. <a href="https://blog.google/products-and-platforms/products/search/generative-ai-google-search-may-2024/" target="_blank" rel="noopener">blog.google</a></li>
+      <li>Semrush. (2025). <em>Semrush AI Overviews Study: Analyzing 10M+ keywords.</em> <a href="https://www.semrush.com/blog/semrush-ai-overviews-study/" target="_blank" rel="noopener">semrush.com</a></li>
+      <li>Search Engine Land. (2025, May 6). <em>Google AI Overviews appear in 13% of searches.</em> <a href="https://searchengineland.com/google-ai-overviews-13-searches-455057" target="_blank" rel="noopener">searchengineland.com</a></li>
+      <li>DemandSage. (2025, December). <em>AI Overviews Statistics.</em> <a href="https://www.demandsage.com/ai-overviews-statistics/" target="_blank" rel="noopener">demandsage.com</a></li>
+      <li>Pew Research Center. (2025, July 22). <em>Google users are less likely to click on links when an AI summary appears in the results.</em> <a href="https://www.pewresearch.org/short-reads/2025/07/22/google-users-are-less-likely-to-click-on-links-when-an-ai-summary-appears-in-the-results/" target="_blank" rel="noopener">pewresearch.org</a></li>
+      <li>CapitalAI.ca. (2026, April 3). <em>AI Visibility Audit: Leeming Danceworks.</em> Internal report.</li>
+    </ol>
+  </div>
+
+  <div class="cta-section">
+    <div class="cta-inner">
+      <div class="cta-eyebrow">Your Move</div>
+      <h2>Find out where you actually stand.</h2>
+      <p>Book your free AI Visibility Audit. We'll show you exactly how your business appears to AI search, where you're missing opportunities, and what to do about it.</p>
+      <a href="https://www.capitalai.ca/#audit" class="cta-button">Book Your Free Audit</a>
+      <div class="cta-meta">~20 minutes · No sales pitch · Ottawa-based</div>
+    </div>
+  </div>
+
+</article>
+
+<footer>
+  CapitalAI<span class="dot">.</span>ca <span class="dot">·</span> Ottawa, ON <span class="dot">·</span> Privacy-first
+</footer>
+
+</body>
+</html>
