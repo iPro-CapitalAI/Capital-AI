@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog · The Visibility Files | Capital AI</title>
+<meta name="description" content="Real AI Visibility Audits, self-hosted SEO playbooks, and case studies from Ottawa businesses learning to get cited by ChatGPT, Perplexity & Google.">
+<link rel="canonical" href="https://www.capitalai.ca/blog/">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Blog · The Visibility Files | Capital AI">
+<meta property="og:description" content="Real AI Visibility Audits and self-hosted SEO playbooks from Ottawa.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.capitalai.ca/blog/">
+<meta property="og:site_name" content="CapitalAI.ca">
+<style>
+@font-face { font-family: 'Syne'; src: url('/fonts/Syne-Bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Syne'; src: url('/fonts/Syne-ExtraBold.woff2') format('woff2'); font-weight: 800; font-display: swap; }
+@font-face { font-family: 'DM Sans'; src: url('/fonts/DMSans-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'DM Sans'; src: url('/fonts/DMSans-Medium.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+@font-face { font-family: 'DM Sans'; src: url('/fonts/DMSans-Bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+:root {
+  --red: #C0392B; --red-dark: #96281B;
+  --bg: #0d0d0d; --bg2: #141414; --bg3: #1a1a1a;
+  --border: rgba(255,255,255,0.07); --border-strong: rgba(255,255,255,0.13);
+  --text: #f0ece4; --text-2: #a09a90; --text-3: #827e7a; --accent: #e8d5b0;
+  --font-display: 'Syne', 'Arial Black', system-ui, sans-serif;
+  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+nav { border-bottom: 1px solid var(--border); background: rgba(13,13,13,0.92); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 50; }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav-logo { font-family: var(--font-display); font-weight: 800; font-size: 22px; letter-spacing: -0.02em; }
+.nav-logo span { color: var(--red); }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { font-size: 14px; font-weight: 500; color: var(--text-2); transition: color 0.15s; }
+.nav-links a:hover, .nav-links a.active { color: var(--text); }
+.nav-right { display: flex; align-items: center; gap: 16px; }
+.lang-toggle { font-size: 13px; color: var(--text-3); }
+.btn-primary { display: inline-block; background: var(--red); color: #fff; padding: 10px 18px; border-radius: 6px; font-size: 14px; font-weight: 600; transition: background 0.15s; }
+.btn-primary:hover { background: var(--red-dark); }
+@media (max-width: 720px) { .nav-links { display: none; } .nav-inner { height: 60px; } }
+.blog-hero { padding: 80px 0 48px; border-bottom: 1px solid var(--border); }
+.blog-eyebrow { font-family: var(--font-display); font-weight: 700; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+.blog-hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(40px, 6vw, 64px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 20px; }
+.blog-hero h1 em { color: var(--red); font-style: italic; }
+.blog-hero p { font-size: 18px; color: var(--text-2); max-width: 640px; }
+.articles { padding: 64px 0 96px; }
+.article-card { display: block; padding: 36px 0; border-bottom: 1px solid var(--border); transition: padding-left 0.2s; }
+.article-card:hover { padding-left: 12px; }
+.article-card:hover .card-title { color: var(--red); }
+.card-meta { display: flex; gap: 16px; font-size: 13px; color: var(--text-3); margin-bottom: 12px; font-weight: 500; flex-wrap: wrap; }
+.card-meta .sep { color: var(--border-strong); }
+.card-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(24px, 3vw, 32px); line-height: 1.2; letter-spacing: -0.01em; margin-bottom: 12px; color: var(--text); transition: color 0.15s; }
+.card-desc { color: var(--text-2); font-size: 16px; line-height: 1.6; max-width: 720px; margin-bottom: 16px; }
+.card-cta { font-size: 14px; font-weight: 600; color: var(--accent); letter-spacing: 0.02em; }
+.card-cta::after { content: ' →'; transition: transform 0.15s; display: inline-block; }
+.article-card:hover .card-cta::after { transform: translateX(4px); }
+.card-featured { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 36px; margin-bottom: 48px; }
+.card-featured:hover { padding-left: 36px; border-color: var(--border-strong); }
+.card-featured .featured-tag { display: inline-block; background: var(--red); color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
+.blog-cta { background: var(--bg2); border-top: 1px solid var(--border); padding: 64px 0; text-align: center; }
+.blog-cta h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 4vw, 40px); margin-bottom: 16px; }
+.blog-cta p { color: var(--text-2); margin-bottom: 28px; }
+footer { border-top: 1px solid var(--border); padding: 32px 0; color: var(--text-3); font-size: 14px; text-align: center; }
+footer a { color: var(--text-2); }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "The Visibility Files",
+  "description": "Real AI Visibility Audits, self-hosted SEO playbooks, and case studies from Ottawa businesses.",
+  "url": "https://www.capitalai.ca/blog/",
+  "publisher": { "@type": "Organization", "name": "Capital AI", "url": "https://www.capitalai.ca/" },
+  "blogPost": [
+    { "@type": "BlogPosting", "headline": "A Local Ottawa Dance Studio Just Discovered They're Invisible to AI Search", "datePublished": "2026-05-26", "url": "https://www.capitalai.ca/blog/ottawa-business-invisible-to-ai-search-leeming-case-study.html", "author": { "@type": "Organization", "name": "Capital AI" } },
+    { "@type": "BlogPosting", "headline": "Self-Hosted AI SEO in 2026: The Complete Zero-Cost Playbook", "url": "https://www.capitalai.ca/blog/self-hosted-ai-seo-2026.html", "author": { "@type": "Organization", "name": "Capital AI" } }
+  ]
+}
+</script>
+</head>
+<body>
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Capital<span>AI</span></a>
+      <ul class="nav-links">
+        <li><a href="/#services">Services</a></li>
+        <li><a href="/blog/" class="active">Blog</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/#audit">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="https://capitalai.ca/fr/" class="lang-toggle" hreflang="fr">EN / FR</a>
+        <a href="/#audit" class="btn-primary">Claim free audit</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<header class="blog-hero">
+  <div class="container">
+    <div class="blog-eyebrow">The Visibility Files · Ottawa</div>
+    <h1>Notes from the <em>AI search</em> frontline.</h1>
+    <p>Real audits. Real case studies. Self-hosted playbooks. Written by Ottawa, for Ottawa businesses figuring out how to get cited by ChatGPT, Perplexity, and Google's AI Overviews — not just ranked.</p>
+  </div>
+</header>
+<main class="articles">
+  <div class="container">
+    <a href="/blog/ottawa-business-invisible-to-ai-search-leeming-case-study.html" class="article-card card-featured">
+      <span class="featured-tag">Case Study · No. 01</span>
+      <div class="card-meta">
+        <span>May 26, 2026</span><span class="sep">·</span>
+        <span>8 min read</span><span class="sep">·</span>
+        <span>Real audit</span>
+      </div>
+      <h2 class="card-title">A Local Ottawa Dance Studio Just Discovered They're Invisible to AI Search.</h2>
+      <p class="card-desc">Leeming Danceworks scored 2.9 / 10 on E-E-A-T. Zero AI citations out of three test queries. Meanwhile their competitors are showing up. The full audit, the specific gaps, and what fixing it actually looks like — published with the client's blessing.</p>
+      <span class="card-cta">Read the case study</span>
+    </a>
+    <a href="/blog/self-hosted-ai-seo-2026.html" class="article-card">
+      <div class="card-meta">
+        <span>Playbook</span><span class="sep">·</span>
+        <span>Self-hosted stack</span>
+      </div>
+      <h2 class="card-title">Self-Hosted AI SEO in 2026: The Zero-Cost Playbook</h2>
+      <p class="card-desc">Stop paying for AI SEO tools. The complete self-hosted system we use at Capital AI — n8n + Ollama + Scrapy + GSC API — that delivered 1,969% traffic growth for comparable use cases. Full agent crew, code, templates inside.</p>
+      <span class="card-cta">Read the playbook</span>
+    </a>
+  </div>
+</main>
+<section class="blog-cta">
+  <div class="container">
+    <h2>Want to know if you're invisible too?</h2>
+    <p>Free 15-min AI Visibility Audit. Same report Leeming got. No pitch. No card.</p>
+    <a href="/#audit" class="btn-primary">Claim your free audit</a>
+  </div>
+</section>
+<footer>
+  <div class="container">
+    © 2026 Capital AI · Ottawa, ON · <a href="/">Home</a> · <a href="https://capitalai.ca/fr/">Français</a>
+  </div>
+</footer>
+</body>
+</html>
