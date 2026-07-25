@@ -1,12 +1,14 @@
 // ============================================================
 // api/form.js - Lead capture (Vercel Function, Node runtime)
 //
+// Classic Node (req, res) handler signature. Verified 2026-07-25:
+// this project's runtime invokes export default with IncomingMessage
+// and ServerResponse (log: "req.headers.get is not a function" when
+// written Web-style). req.headers is a plain object here.
+//
 // Writes every submission to a PRIVATE Vercel Blob store as one
 // JSON file per lead. Returns an honest error when the write
 // fails, so a visitor never sees "success" for a lost lead.
-//
-// Replaces the previous version, which logged to console and
-// returned {ok:true} unconditionally - every lead was lost.
 //
 // ASCII-only on purpose: this repo has an open UTF-8 mojibake
 // defect. New files stay ASCII so they cannot inherit it.
@@ -16,20 +18,13 @@ import { put } from '@vercel/blob';
 
 const ALLOWED_ORIGINS = ['https://www.capitalai.ca', 'https://capitalai.ca'];
 
-function corsHeaders(origin) {
+function applyCors(req, res) {
+  const origin = req.headers['origin'] || '';
   const allowed = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
-  return {
-    'Access-Control-Allow-Origin': allowed,
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
-  };
-}
-
-function json(body, status, extra) {
-  return new Response(JSON.stringify(body), {
-    status,
-    headers: { 'Content-Type': 'application/json', ...extra },
-  });
+  res.setHeader('Access-Control-Allow-Origin', allowed);
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  return origin;
 }
 
 // Filename-safe slug. Accents stripped because this is a bilingual market
@@ -45,15 +40,37 @@ function slug(value) {
   return s || 'unknown';
 }
 
-export default async function handler(req) {
-  const origin = req.headers.get('origin') || '';
-  const headers = corsHeaders(origin);
+// Vercel's Node runtime pre-parses the body for JSON and urlencoded
+// content types (req.body is an object). Handle the string case too,
+// so a runtime behaviour change cannot break parsing.
+function readBody(req) {
+  const contentType = String(req.headers['content-type'] || '');
+  const body = req.body;
+  if (body == null) return {};
+  if (typeof body === 'object') return body;
+  if (typeof body === 'string') {
+    if (contentType.includes('application/json')) {
+      try { return JSON.parse(body); } catch (e) { return {}; }
+    }
+    if (contentType.includes('application/x-www-form-urlencoded')) {
+      const out = {};
+      for (const [k, v] of new URLSearchParams(body).entries()) out[k] = v;
+      return out;
+    }
+  }
+  return {};
+}
+
+export default async function handler(req, res) {
+  const origin = applyCors(req, res);
 
   if (req.method === 'OPTIONS') {
-    return new Response(null, { status: 204, headers });
+    res.status(204).end();
+    return;
   }
   if (req.method !== 'POST') {
-    return json({ error: 'Method not allowed' }, 405, headers);
+    res.status(405).json({ error: 'Method not allowed' });
+    return;
   }
 
   // Declared outside the try so the catch block can log the full lead.
@@ -62,27 +79,19 @@ export default async function handler(req) {
   let record = null;
 
   try {
-    const contentType = req.headers.get('content-type') || '';
-    let data = {};
-
-    if (contentType.includes('application/x-www-form-urlencoded')) {
-      const params = new URLSearchParams(await req.text());
-      for (const [k, v] of params.entries()) data[k] = v;
-    } else if (contentType.includes('application/json')) {
-      data = await req.json();
-    } else {
-      return json({ error: 'Unsupported content type' }, 415, headers);
-    }
+    const data = readBody(req);
 
     // Honeypot. Bots get a clean 200 and nothing is stored.
     if (data._gotcha) {
-      return json({ ok: true }, 200, headers);
+      res.status(200).json({ ok: true });
+      return;
     }
 
     // Minimum viable lead: we must be able to reach them.
     const email = String(data.email || '').trim();
     if (!email || !email.includes('@') || email.length > 254) {
-      return json({ error: 'A valid email address is required.' }, 400, headers);
+      res.status(400).json({ error: 'A valid email address is required.' });
+      return;
     }
 
     const now = new Date();
@@ -103,7 +112,7 @@ export default async function handler(req) {
       location: String(data.location || '').trim() || 'Ottawa, Canada',
       competitor_url: String(data.competitor_url || '').trim() || 'Not provided',
       source_origin: origin,
-      user_agent: req.headers.get('user-agent') || '',
+      user_agent: String(req.headers['user-agent'] || ''),
       raw: data,
     };
 
@@ -118,7 +127,7 @@ export default async function handler(req) {
       addRandomSuffix: false,
     });
 
-    return json({ ok: true }, 200, headers);
+    res.status(200).json({ ok: true });
   } catch (err) {
     // Last-resort capture. Vercel log retention is short, so this is a
     // recovery window, not a storage strategy.
@@ -126,13 +135,9 @@ export default async function handler(req) {
     if (record) {
       console.error('UNSAVED LEAD PAYLOAD:', JSON.stringify(record));
     }
-    return json(
-      {
-        error:
-          'Sorry - we could not save your request. Please email hello@capitalai.ca directly and we will pick it up right away.',
-      },
-      500,
-      headers
-    );
+    res.status(500).json({
+      error:
+        'Sorry - we could not save your request. Please email hello@capitalai.ca directly and we will pick it up right away.',
+    });
   }
 }

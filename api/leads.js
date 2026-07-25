@@ -1,6 +1,10 @@
 // ============================================================
 // api/leads.js - Private leads viewer (Vercel Function, Node runtime)
 //
+// Classic Node (req, res) handler signature. Verified 2026-07-25:
+// this project's runtime invokes export default with IncomingMessage
+// and ServerResponse. req.headers is a plain object here.
+//
 // Serves an HTML list of every captured lead, newest first.
 // Protected by HTTP Basic auth against LEADS_PASSWORD. The browser
 // shows its own password prompt - no login form to build.
@@ -12,15 +16,11 @@
 
 import { list, get } from '@vercel/blob';
 
-function unauthorized() {
-  return new Response('Authentication required.', {
-    status: 401,
-    headers: {
-      'WWW-Authenticate': 'Basic realm="CapitalAI leads", charset="UTF-8"',
-      'Cache-Control': 'no-store',
-      'X-Robots-Tag': 'noindex, nofollow',
-    },
-  });
+function unauthorized(res) {
+  res.setHeader('WWW-Authenticate', 'Basic realm="CapitalAI leads", charset="UTF-8"');
+  res.setHeader('Cache-Control', 'no-store');
+  res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+  res.status(401).send('Authentication required.');
 }
 
 // Constant-time-ish comparison. Leaks length only, which is acceptable here.
@@ -40,43 +40,47 @@ function esc(value) {
     .replace(/"/g, '&quot;');
 }
 
-// The SDK's get() return shape varies by version, so handle the
-// plausible shapes rather than assuming one. Verify on preview.
+// Current documented get() shape (Vercel quickstart, verified 2026-07-24):
+// { statusCode, stream, blob } - stream is a ReadableStream.
+// Older / alternative shapes kept as fallbacks.
 async function readBlobText(result) {
   if (!result) return null;
-  // Current documented shape (Vercel quickstart, verified 2026-07-24):
-  // { statusCode, stream, blob } - stream is a ReadableStream.
   if (result.statusCode && result.statusCode !== 200) return null;
   if (result.stream) return await new Response(result.stream).text();
-  // Older / alternative shapes, kept as fallbacks.
   if (typeof result.text === 'function') return await result.text();
   if (result.body) return await new Response(result.body).text();
   if (typeof result === 'string') return result;
   return null;
 }
 
-export default async function handler(req) {
+export default async function handler(req, res) {
   const expected = process.env.LEADS_PASSWORD;
 
   // Fail closed. A missing password must never mean an open page.
   if (!expected) {
-    return new Response('Leads viewer is not configured.', {
-      status: 503,
-      headers: { 'Cache-Control': 'no-store' },
-    });
+    res.setHeader('Cache-Control', 'no-store');
+    res.status(503).send('Leads viewer is not configured.');
+    return;
   }
 
-  const auth = req.headers.get('authorization') || '';
-  if (!auth.startsWith('Basic ')) return unauthorized();
+  const auth = String(req.headers['authorization'] || '');
+  if (!auth.startsWith('Basic ')) {
+    unauthorized(res);
+    return;
+  }
 
   let supplied = '';
   try {
-    const decoded = atob(auth.slice(6));
+    const decoded = Buffer.from(auth.slice(6), 'base64').toString('utf8');
     supplied = decoded.slice(decoded.indexOf(':') + 1);
   } catch (e) {
-    return unauthorized();
+    unauthorized(res);
+    return;
   }
-  if (!safeEqual(supplied, expected)) return unauthorized();
+  if (!safeEqual(supplied, expected)) {
+    unauthorized(res);
+    return;
+  }
 
   try {
     // Page through the store so the list is never silently truncated.
@@ -163,19 +167,13 @@ ${rows}
 </body>
 </html>`;
 
-    return new Response(html, {
-      status: 200,
-      headers: {
-        'Content-Type': 'text/html; charset=utf-8',
-        'Cache-Control': 'no-store',
-        'X-Robots-Tag': 'noindex, nofollow',
-      },
-    });
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.setHeader('Cache-Control', 'no-store');
+    res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+    res.status(200).send(html);
   } catch (err) {
     console.error('LEADS VIEWER FAILED:', err && err.message);
-    return new Response('Could not load leads. Check function logs.', {
-      status: 500,
-      headers: { 'Cache-Control': 'no-store' },
-    });
+    res.setHeader('Cache-Control', 'no-store');
+    res.status(500).send('Could not load leads. Check function logs.');
   }
 }
