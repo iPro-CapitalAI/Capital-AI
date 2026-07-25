@@ -4,3 +4,12 @@ node_modules/
 .vercel/
 *.log
 .DS_Store
+
+# Session artifacts - handovers, GSC exports, scratch files.
+# Primary defence is keeping these OUTSIDE the repo (Desktop\Capital AI\session-stuff\).
+# These patterns are layer 2 only - do not rely on them alone.
+session-stuff/
+Session stuff/
+*handover*.md
+/*.csv
+/*.xlsx
