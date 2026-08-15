@@ -1,7 +1,8 @@
 {
   "redirects": [
     { "source": "/chatbot.html", "destination": "/", "permanent": true },
-    { "source": "/chatbot", "destination": "/", "permanent": true }
+    { "source": "/chatbot", "destination": "/", "permanent": true },
+    { "source": "/blog/ottawa-business-invisible-to-ai-search-leeming-case-study.html", "destination": "/blog/", "permanent": true }
   ],
   "rewrites": [
     {
