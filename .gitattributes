@@ -1,4 +1,4 @@
-﻿# Enforce consistent line endings for web + markdown files
+# Enforce consistent line endings for web + markdown files
 * text=auto
 
 # Force HTML, JS, CSS, MD to LF (best for Vercel + GitHub)
